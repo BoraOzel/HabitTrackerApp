@@ -31,7 +31,7 @@ class LoginViewController: UIViewController,
         Task {
             do {
                 try await AuthManager.shared.signIn(with: email, password: password)
-                //navigate to app
+                
             }
             catch let error as AuthError {
                 showAlert(title: "Error",
@@ -41,6 +41,6 @@ class LoginViewController: UIViewController,
         }
     }
     @IBAction func registerButtonClicked(_ sender: Any) {
-        //navigate to register screen
+        
     }
 }

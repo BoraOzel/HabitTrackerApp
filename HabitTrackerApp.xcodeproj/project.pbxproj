@@ -30,6 +30,8 @@
 		0FBFEE9E2ED89C2D00DCF993 /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEE9D2ED89C2D00DCF993 /* AuthError.swift */; };
 		0FBFEEA02ED89C3900DCF993 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEE9F2ED89C3900DCF993 /* AppUser.swift */; };
 		0FBFEEA22ED8A39300DCF993 /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEEA12ED8A39300DCF993 /* AlertPresentable.swift */; };
+		0FBFEEA62ED9BAF900DCF993 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEEA42ED9BAF900DCF993 /* RegisterViewController.swift */; };
+		0FBFEEA72ED9BAF900DCF993 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FBFEEA52ED9BAF900DCF993 /* RegisterViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,8 @@
 		0FBFEE9D2ED89C2D00DCF993 /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
 		0FBFEE9F2ED89C3900DCF993 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		0FBFEEA12ED8A39300DCF993 /* AlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentable.swift; sourceTree = "<group>"; };
+		0FBFEEA42ED9BAF900DCF993 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		0FBFEEA52ED9BAF900DCF993 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 		0FBFEE742ED8864500DCF993 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				0FBFEEA32ED9BAE500DCF993 /* Register */,
 				0FBFEE992ED88F8B00DCF993 /* Profile */,
 				0FBFEE902ED88F4F00DCF993 /* Stats */,
 				0FBFEE7C2ED886FA00DCF993 /* Login */,
@@ -183,6 +188,15 @@
 				0FBFEE9B2ED895D500DCF993 /* AuthManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		0FBFEEA32ED9BAE500DCF993 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				0FBFEEA42ED9BAF900DCF993 /* RegisterViewController.swift */,
+				0FBFEEA52ED9BAF900DCF993 /* RegisterViewController.xib */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +275,7 @@
 				0FBFEE702ED8862A00DCF993 /* LaunchScreen.storyboard in Resources */,
 				0FBFEE932ED88F6A00DCF993 /* StatsViewController.xib in Resources */,
 				0FBFEE7A2ED886DA00DCF993 /* HomeViewController.xib in Resources */,
+				0FBFEEA72ED9BAF900DCF993 /* RegisterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +289,7 @@
 				0FBFEE802ED8871200DCF993 /* LoginViewController.swift in Sources */,
 				0FBFEE9C2ED895D500DCF993 /* AuthManager.swift in Sources */,
 				0FBFEEA22ED8A39300DCF993 /* AlertPresentable.swift in Sources */,
+				0FBFEEA62ED9BAF900DCF993 /* RegisterViewController.swift in Sources */,
 				0FBFEE712ED8862A00DCF993 /* AppDelegate.swift in Sources */,
 				0FBFEE8D2ED88AD800DCF993 /* MainTabBarController.swift in Sources */,
 				0FBFEE722ED8862A00DCF993 /* SceneDelegate.swift in Sources */,
