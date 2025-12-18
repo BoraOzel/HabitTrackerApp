@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol LoginViewControllerInterface: AnyObject {
+    func navigateToRegister(vc: UIViewController)
+}
+
 class LoginViewController: UIViewController,
                            AlertPresentable {
     
@@ -23,14 +27,14 @@ class LoginViewController: UIViewController,
         guard let email = emailTextField.text, !email.isEmpty,
               let password = passwordTextField.text, !password.isEmpty else {
             showAlert(title: "Error",
-                      message: "Email/password can not be empty.",
+                      message: AuthError.blank.localizedDescription,
                       buttonText: "OK")
             return
         }
         
         Task {
             do {
-                try await AuthManager.shared.signIn(with: email, password: password)
+                try await AuthManager.shared.signIn(with: email, password: password) //view modelden çağır
                 
             }
             catch let error as AuthError {
@@ -41,6 +45,12 @@ class LoginViewController: UIViewController,
         }
     }
     @IBAction func registerButtonClicked(_ sender: Any) {
-        
+        navigateToRegister(vc: RegisterViewController(nibName: "RegisterViewController", bundle: nil))
+    }
+}
+
+extension LoginViewController: LoginViewControllerInterface {
+    func navigateToRegister(vc: UIViewController) {
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

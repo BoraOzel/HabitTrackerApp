@@ -14,6 +14,7 @@ enum AuthError: Error {
     case userNotFound
     case emailAlreadyInUse
     case unknown
+    case blank
     
     var localizedDescription: String {
         switch self {
@@ -23,6 +24,7 @@ enum AuthError: Error {
         case .userNotFound: return "User not found."
         case .emailAlreadyInUse: return "This email is already in use."
         case .unknown: return "An unknown error occured."
+        case .blank: return "Email or password can not be empty."
         }
     }
 }

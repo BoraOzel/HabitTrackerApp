@@ -32,6 +32,7 @@
 		0FBFEEA22ED8A39300DCF993 /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEEA12ED8A39300DCF993 /* AlertPresentable.swift */; };
 		0FBFEEA62ED9BAF900DCF993 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEEA42ED9BAF900DCF993 /* RegisterViewController.swift */; };
 		0FBFEEA72ED9BAF900DCF993 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FBFEEA52ED9BAF900DCF993 /* RegisterViewController.xib */; };
+		0FBFEEA92EF4208500DCF993 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEEA82EF4208500DCF993 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		0FBFEEA12ED8A39300DCF993 /* AlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentable.swift; sourceTree = "<group>"; };
 		0FBFEEA42ED9BAF900DCF993 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		0FBFEEA52ED9BAF900DCF993 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		0FBFEEA82EF4208500DCF993 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,8 +160,9 @@
 		0FBFEE7C2ED886FA00DCF993 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				0FBFEE7D2ED8871200DCF993 /* LoginViewController.swift */,
 				0FBFEE7E2ED8871200DCF993 /* LoginViewController.xib */,
+				0FBFEE7D2ED8871200DCF993 /* LoginViewController.swift */,
+				0FBFEEA82EF4208500DCF993 /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				0FBFEE8D2ED88AD800DCF993 /* MainTabBarController.swift in Sources */,
 				0FBFEE722ED8862A00DCF993 /* SceneDelegate.swift in Sources */,
 				0FBFEE982ED88F8700DCF993 /* ProfileViewController.swift in Sources */,
+				0FBFEEA92EF4208500DCF993 /* LoginViewModel.swift in Sources */,
 				0FBFEE9E2ED89C2D00DCF993 /* AuthError.swift in Sources */,
 				0FBFEE942ED88F6A00DCF993 /* StatsViewController.swift in Sources */,
 				0FBFEEA02ED89C3900DCF993 /* AppUser.swift in Sources */,

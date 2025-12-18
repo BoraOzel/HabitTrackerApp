@@ -25,7 +25,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         else {
             let loginVC = LoginViewController(nibName: "LoginViewController", bundle: nil)
-            window.rootViewController = loginVC
+            let navigationController = UINavigationController(rootViewController: loginVC)
+            window.rootViewController = navigationController
         }
         
         self.window = window
