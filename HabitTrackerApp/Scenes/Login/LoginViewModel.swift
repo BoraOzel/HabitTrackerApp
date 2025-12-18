@@ -13,18 +13,14 @@ protocol LoginViewModelInterface {
 
 class LoginViewModel {
     
-    private var authManager: AuthManager
+    private let authManager = AuthManager.shared
     weak var view: LoginViewControllerInterface?
     
-    init(authManager: AuthManager = AuthManager.shared,
-         view: LoginViewControllerInterface) {
-        self.authManager = authManager
-        self.view = view
-    }
 }
 
 extension LoginViewModel: LoginViewModelInterface {
     
+    @MainActor
     func login(email: String?, password: String?) async throws {
         
         guard let email = email, !email.isEmpty,

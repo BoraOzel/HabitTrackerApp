@@ -17,33 +17,36 @@ class LoginViewController: UIViewController,
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    private var viewModel: LoginViewModelInterface
+    
+    init(viewModel: LoginViewModelInterface) {
+        self.viewModel = viewModel
+        super.init(nibName: "LoginViewController", bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     @IBAction func loginButtonClicked(_ sender: Any) {
-        
-        guard let email = emailTextField.text, !email.isEmpty,
-              let password = passwordTextField.text, !password.isEmpty else {
-            showAlert(title: "Error",
-                      message: AuthError.blank.localizedDescription,
-                      buttonText: "OK")
-            return
-        }
-        
         Task {
             do {
-                try await AuthManager.shared.signIn(with: email, password: password) //view modelden çağır
-                
+                try await viewModel.login(email: emailTextField.text, password: passwordTextField.text)
             }
-            catch let error as AuthError {
-                showAlert(title: "Error",
-                          message: error.localizedDescription,
-                          buttonText: "OK")
+            catch {
+                if let authError = error as? AuthError {
+                    showAlert(title: "Error",
+                              message: authError.localizedDescription,
+                              buttonText: "OK")
+                }
             }
         }
     }
+    
     @IBAction func registerButtonClicked(_ sender: Any) {
         navigateToRegister(vc: RegisterViewController(nibName: "RegisterViewController", bundle: nil))
     }

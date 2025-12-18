@@ -24,7 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.rootViewController = MainTabBarController()
         }
         else {
-            let loginVC = LoginViewController(nibName: "LoginViewController", bundle: nil)
+            let loginVM = LoginViewModel()
+            let loginVC = LoginViewController(viewModel: loginVM)
             let navigationController = UINavigationController(rootViewController: loginVC)
             window.rootViewController = navigationController
         }
