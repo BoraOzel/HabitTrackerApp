@@ -24,14 +24,14 @@ class MainTabBarController: UITabBarController {
                                           image: UIImage(systemName: "checklist"),
                                           selectedImage: UIImage(systemName: "checklist.checked"))
         
-        let statsVC = HomeViewController(nibName: "StatsViewController", bundle: nil)
+        let statsVC = StatsViewController(nibName: "StatsViewController", bundle: nil)
         let statsNav = UINavigationController(rootViewController: statsVC)
         
         statsNav.tabBarItem = UITabBarItem(title: "Stats",
                                           image: UIImage(systemName: "chart.bar"),
                                           selectedImage: UIImage(systemName: "chart.bar.fill"))
         
-        let profileVC = HomeViewController(nibName: "ProfileViewController", bundle: nil)
+        let profileVC = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
         let profileNav = UINavigationController(rootViewController: profileVC)
         
         profileNav.tabBarItem = UITabBarItem(title: "Profile",

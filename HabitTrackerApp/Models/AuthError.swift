@@ -21,10 +21,10 @@ enum AuthError: Error {
         case .invalidEmail: return "İnvalid email format."
         case .weakPassword: return "Weak password. Please use stronger password."
         case .wrongPassword: return "Wrong password."
-        case .userNotFound: return "User not found."
+        case .userNotFound: return "No user found with this email. Please sign up."
         case .emailAlreadyInUse: return "This email is already in use."
         case .unknown: return "An unknown error occured."
-        case .blank: return "Email or password can not be empty."
+        case .blank: return "Please fill all the blanks.."
         }
     }
 }

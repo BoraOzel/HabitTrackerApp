@@ -32,19 +32,7 @@ extension LoginViewModel: LoginViewModelInterface {
             throw AuthError.invalidEmail
         }
         
-        do{
-            try await authManager.signIn(with: email, password: password)
-        }
-        catch
-        {
-            let nsError = error as NSError
-            
-            if nsError.code == 17009 {
-                throw AuthError.wrongPassword
-            }
-            else {
-                throw AuthError.unknown
-            }
-        }
+        try await authManager.signIn(with: email, password: password)
     }
 }
+

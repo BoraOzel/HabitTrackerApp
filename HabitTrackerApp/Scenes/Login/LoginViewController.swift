@@ -8,7 +8,8 @@
 import UIKit
 
 protocol LoginViewControllerInterface: AnyObject {
-    func navigateToRegister(vc: UIViewController)
+    func navigateToReigster(vc: UIViewController)
+    func navigateToApp()
 }
 
 class LoginViewController: UIViewController,
@@ -36,6 +37,7 @@ class LoginViewController: UIViewController,
         Task {
             do {
                 try await viewModel.login(email: emailTextField.text, password: passwordTextField.text)
+                navigateToApp()
             }
             catch {
                 if let authError = error as? AuthError {
@@ -48,12 +50,18 @@ class LoginViewController: UIViewController,
     }
     
     @IBAction func registerButtonClicked(_ sender: Any) {
-        navigateToRegister(vc: RegisterViewController(nibName: "RegisterViewController", bundle: nil))
+        navigateToReigster(vc: RegisterViewController(viewModel: RegisterViewModel()))
     }
 }
 
 extension LoginViewController: LoginViewControllerInterface {
-    func navigateToRegister(vc: UIViewController) {
+    
+    func navigateToReigster(vc: UIViewController) {
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func navigateToApp() {
+        guard let window = self.view.window else { return }
+        Router.switchToApp(window: window)
     }
 }

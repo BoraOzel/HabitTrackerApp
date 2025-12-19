@@ -33,6 +33,8 @@
 		0FBFEEA62ED9BAF900DCF993 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEEA42ED9BAF900DCF993 /* RegisterViewController.swift */; };
 		0FBFEEA72ED9BAF900DCF993 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FBFEEA52ED9BAF900DCF993 /* RegisterViewController.xib */; };
 		0FBFEEA92EF4208500DCF993 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEEA82EF4208500DCF993 /* LoginViewModel.swift */; };
+		0FBFEEC62EF439A500DCF993 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEEC52EF439A500DCF993 /* RegisterViewModel.swift */; };
+		0FBFEEC82EF563FD00DCF993 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEEC72EF563FD00DCF993 /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +61,8 @@
 		0FBFEEA42ED9BAF900DCF993 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		0FBFEEA52ED9BAF900DCF993 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		0FBFEEA82EF4208500DCF993 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		0FBFEEC52EF439A500DCF993 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		0FBFEEC72EF563FD00DCF993 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +148,7 @@
 			children = (
 				0FBFEE8C2ED88AD800DCF993 /* MainTabBarController.swift */,
 				0FBFEEA12ED8A39300DCF993 /* AlertPresentable.swift */,
+				0FBFEEC72EF563FD00DCF993 /* Router.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -196,8 +201,9 @@
 		0FBFEEA32ED9BAE500DCF993 /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				0FBFEEA42ED9BAF900DCF993 /* RegisterViewController.swift */,
 				0FBFEEA52ED9BAF900DCF993 /* RegisterViewController.xib */,
+				0FBFEEA42ED9BAF900DCF993 /* RegisterViewController.swift */,
+				0FBFEEC52EF439A500DCF993 /* RegisterViewModel.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -296,8 +302,10 @@
 				0FBFEE712ED8862A00DCF993 /* AppDelegate.swift in Sources */,
 				0FBFEE8D2ED88AD800DCF993 /* MainTabBarController.swift in Sources */,
 				0FBFEE722ED8862A00DCF993 /* SceneDelegate.swift in Sources */,
+				0FBFEEC82EF563FD00DCF993 /* Router.swift in Sources */,
 				0FBFEE982ED88F8700DCF993 /* ProfileViewController.swift in Sources */,
 				0FBFEEA92EF4208500DCF993 /* LoginViewModel.swift in Sources */,
+				0FBFEEC62EF439A500DCF993 /* RegisterViewModel.swift in Sources */,
 				0FBFEE9E2ED89C2D00DCF993 /* AuthError.swift in Sources */,
 				0FBFEE942ED88F6A00DCF993 /* StatsViewController.swift in Sources */,
 				0FBFEEA02ED89C3900DCF993 /* AppUser.swift in Sources */,
