@@ -7,10 +7,13 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
 
 final class AuthManager {
     
     static let shared = AuthManager()
+    
+    private let db = Firestore.firestore()
     
     private init() {}
     
@@ -27,9 +30,17 @@ final class AuthManager {
     }
     
     
-    func registerUser(with email: String, password: String, name: String, surname: String) async throws {
+    func registerUser(with email: String, password: String, name: String, surname: String, birthdate: Date) async throws {
         do {
-            try await Auth.auth().createUser(withEmail: email, password: password)
+            let result = try await Auth.auth().createUser(withEmail: email, password: password)
+            let uid = result.user.uid
+            
+            let newAppUser = AppUser(id: uid,
+                                     name: "\(name) \(surname)",
+                                     email: email,
+                                     birthDate: birthdate)
+            
+            try db.collection("users").document(uid).setData(from: newAppUser)
         }
         catch {
             throw mapFirebaseError(error)

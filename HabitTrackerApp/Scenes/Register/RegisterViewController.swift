@@ -43,7 +43,8 @@ class RegisterViewController: UIViewController,
                 try await viewModel.signUp(email: emailTextField.text,
                                            password: passwordTextField.text,
                                            name: nameTextField.text,
-                                           surname: surnameTextField.text)
+                                           surname: surnameTextField.text,
+                                           birthdate: birthDatePicker.date)
                 navigateToApp()
             }
             catch {

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol RegisterViewModelInterface: AnyObject {
-    func signUp(email: String?, password: String?, name: String?, surname: String?) async throws
+    func signUp(email: String?, password: String?, name: String?, surname: String?, birthdate: Date?) async throws
 }
 
 class RegisterViewModel {
@@ -21,12 +21,13 @@ class RegisterViewModel {
 extension RegisterViewModel: RegisterViewModelInterface {
     
     @MainActor
-    func signUp(email: String?, password: String?, name: String?, surname: String?) async throws {
+    func signUp(email: String?, password: String?, name: String?, surname: String?, birthdate: Date?) async throws {
         
         guard let email = email, !email.isEmpty,
               let password = password, !password.isEmpty,
               let name = name, !name.isEmpty,
-              let surname = surname, !surname.isEmpty
+              let surname = surname, !surname.isEmpty,
+              let birthdate = birthdate
         else {
             throw AuthError.blank
         }
@@ -35,6 +36,10 @@ extension RegisterViewModel: RegisterViewModelInterface {
             throw AuthError.invalidEmail
         }
         
-        try await authManager.registerUser(with: email, password: password, name: name, surname: surname)
+        try await authManager.registerUser(with: email,
+                                           password: password,
+                                           name: name,
+                                           surname: surname,
+                                           birthdate: birthdate)
     }
 }

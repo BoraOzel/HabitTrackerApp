@@ -24,7 +24,7 @@ enum AuthError: Error {
         case .userNotFound: return "No user found with this email. Please sign up."
         case .emailAlreadyInUse: return "This email is already in use."
         case .unknown: return "An unknown error occured."
-        case .blank: return "Please fill all the blanks.."
+        case .blank: return "Please fill all the blanks."
         }
     }
 }

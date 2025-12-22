@@ -22,7 +22,8 @@ class ProfileViewController: UIViewController {
             try authManager.signOut()
             
             guard let window = self.view.window else { return }
-            Router.switchToAuth(window: window)
+            Router.switchToAuth(window: window
+            )
         }
         catch {
             print(error.localizedDescription)
