@@ -66,31 +66,28 @@ extension HomeViewModel: HomeViewModelInterface {
     }
     
     func selectDate(index: Int) {
-        // A. Şu an seçili olan günün indexini bul (Eski gün -> Gri olacak)
-        // Calendar karşılaştırması en garantisidir.
+    
         let calendar = Calendar.current
         let oldIndex = dates.firstIndex(where: { calendar.isDate($0, inSameDayAs: selectedDate) })
         
-        // B. Yeni tarihi güncelle
         self.selectedDate = dates[index]
         
-        // C. Yenilenecek indeksleri belirle (Hem eskiyi gri yap, hem yeniyi mor yap)
-        var indicesToReload: [Int] = [index] // Yeni seçilen kesin yenilenecek
+        var indicesToReload: [Int] = [index]
         
         if let old = oldIndex, old != index {
-            indicesToReload.append(old) // Eski seçili olan varsa onu da ekle
+            indicesToReload.append(old)
         }
         
-        // D. View Controller'a "Sadece bu kutuları boya" de.
         delegate?.reloadItems(at: indicesToReload)
-        
-        // E. Kaydırma işlemini yap
         delegate?.scrollToDate(index: index)
+        
     }
     
     func getScrollIndexForSelectedItem() -> Int? {
+        
         let calendar = Calendar.current
         return dates.firstIndex(where: { calendar.isDate($0, inSameDayAs: selectedDate) })
+        
     }
     
 }

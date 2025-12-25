@@ -11,7 +11,6 @@ class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupTabs()
     }
     
@@ -42,4 +41,5 @@ class MainTabBarController: UITabBarController {
         self.viewControllers = [homeNav, statsNav, profileNav]
         
     }
+    
 }

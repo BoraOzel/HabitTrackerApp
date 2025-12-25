@@ -59,8 +59,12 @@ class RegisterViewController: UIViewController,
 }
 
 extension RegisterViewController: RegisterViewControllerInterface {
+    
     func navigateToApp() {
+        
         guard let window = self.view.window else { return }
         Router.switchToApp(window: window)
+        
     }
+    
 }

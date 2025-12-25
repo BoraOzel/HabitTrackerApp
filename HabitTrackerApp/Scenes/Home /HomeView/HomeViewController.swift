@@ -33,6 +33,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func addButtonClicked(_ sender: Any) {
+        
     }
     
 }
@@ -65,7 +66,7 @@ extension HomeViewController: HomeViewControllerInterface {
     
 }
 
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -99,9 +100,17 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
     }
     
+}
+
+extension HomeViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.selectDate(index: indexPath.row)
     }
+    
+}
+
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -116,23 +125,27 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension HomeViewController: HomeViewModelDelegate {
     func reloadData() {
+        
         DispatchQueue.main.async {
             self.calendarCollectionView.reloadData()
         }
+        
     }
     
     func reloadItems(at indices: [Int]) {
-        // Gelen sayıları (Int) IndexPath formatına çeviriyoruz
+        
         let indexPathsToReload = indices.map { IndexPath(item: $0, section: 0) }
         
-        // Main thread'de sadece bu hücreleri yeniliyoruz
         DispatchQueue.main.async {
             self.calendarCollectionView.reloadItems(at: indexPathsToReload)
         }
+        
     }
     
     func scrollToDate(index: Int) {
+        
         let indexPath = IndexPath(item: index, section: 0)
         calendarCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+        
     }
 }

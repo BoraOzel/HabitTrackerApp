@@ -33,6 +33,8 @@ extension LoginViewModel: LoginViewModelInterface {
         }
         
         try await authManager.signIn(with: email, password: password)
+        
     }
+    
 }
 

@@ -41,6 +41,7 @@
 		0FBFEED52EFC416E00DCF993 /* HabitCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FBFEED42EFC416E00DCF993 /* HabitCollectionViewCell.xib */; };
 		0FBFEED62EFC416E00DCF993 /* HabitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEED32EFC416E00DCF993 /* HabitCollectionViewCell.swift */; };
 		0FBFEED82EFC7EC900DCF993 /* CollectionViewFlowCustomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEED72EFC7EC900DCF993 /* CollectionViewFlowCustomizable.swift */; };
+		0FBFEEDA2EFDB8E500DCF993 /* Habits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEED92EFDB8E500DCF993 /* Habits.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		0FBFEED32EFC416E00DCF993 /* HabitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCollectionViewCell.swift; sourceTree = "<group>"; };
 		0FBFEED42EFC416E00DCF993 /* HabitCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabitCollectionViewCell.xib; sourceTree = "<group>"; };
 		0FBFEED72EFC7EC900DCF993 /* CollectionViewFlowCustomizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowCustomizable.swift; sourceTree = "<group>"; };
+		0FBFEED92EFDB8E500DCF993 /* Habits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habits.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			children = (
 				0FBFEE9D2ED89C2D00DCF993 /* AuthError.swift */,
 				0FBFEE9F2ED89C3900DCF993 /* AppUser.swift */,
+				0FBFEED92EFDB8E500DCF993 /* Habits.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				0FBFEEA22ED8A39300DCF993 /* AlertPresentable.swift in Sources */,
 				0FBFEEA62ED9BAF900DCF993 /* RegisterViewController.swift in Sources */,
 				0FBFEE712ED8862A00DCF993 /* AppDelegate.swift in Sources */,
+				0FBFEEDA2EFDB8E500DCF993 /* Habits.swift in Sources */,
 				0FBFEE8D2ED88AD800DCF993 /* MainTabBarController.swift in Sources */,
 				0FBFEE722ED8862A00DCF993 /* SceneDelegate.swift in Sources */,
 				0FBFEED82EFC7EC900DCF993 /* CollectionViewFlowCustomizable.swift in Sources */,

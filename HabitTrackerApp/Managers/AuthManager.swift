@@ -31,6 +31,7 @@ final class AuthManager {
     
     
     func registerUser(with email: String, password: String, name: String, surname: String, birthdate: Date) async throws {
+        
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             let uid = result.user.uid
@@ -45,25 +46,31 @@ final class AuthManager {
         catch {
             throw mapFirebaseError(error)
         }
+        
     }
     
     func signIn(with email: String, password: String) async throws {
+        
         do {
             try await Auth.auth().signIn(withEmail: email, password: password)
         } catch {
             throw mapFirebaseError(error)
         }
+        
     }
     
     func signOut() throws {
+        
         do {
             try Auth.auth().signOut()
         } catch {
             throw error
         }
+        
     }
     
     func mapFirebaseError(_ error: Error) -> AuthError {
+        
         guard let nsError = error as NSError? else { return .unknown }
         
         if let errorCode = AuthErrorCode(rawValue: nsError.code) {
@@ -83,6 +90,7 @@ final class AuthManager {
             }
         }
         return .unknown
+        
     }
     
 }

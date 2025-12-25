@@ -24,19 +24,24 @@ public protocol AlertPresentable {
 }
 
 extension AlertPresentable where Self: UIViewController {
+    
     func showAlert(title: String? = nil,
                    message: String? = nil,
                    buttonText: String? = nil,
                    handler: AlertPresentableHandler? = nil) {
+        
         let alert = UIAlertController(title: title,
                                       message: message,
                                       preferredStyle: .alert)
+        
         let retryAction = UIAlertAction(title: buttonText,
                                         style: .default) { _ in
             handler?(.retry)
         }
+        
         alert.addAction(retryAction)
         self.present(alert, animated: true, completion: nil)
     }
+    
 }
 

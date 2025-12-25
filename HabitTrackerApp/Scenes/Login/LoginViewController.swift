@@ -34,6 +34,7 @@ class LoginViewController: UIViewController,
     }
     
     @IBAction func loginButtonClicked(_ sender: Any) {
+        
         Task {
             do {
                 try await viewModel.login(email: emailTextField.text, password: passwordTextField.text)
@@ -47,11 +48,13 @@ class LoginViewController: UIViewController,
                 }
             }
         }
+        
     }
     
     @IBAction func registerButtonClicked(_ sender: Any) {
         navigateToReigster(vc: RegisterViewController(viewModel: RegisterViewModel()))
     }
+    
 }
 
 extension LoginViewController: LoginViewControllerInterface {
@@ -61,7 +64,10 @@ extension LoginViewController: LoginViewControllerInterface {
     }
     
     func navigateToApp() {
+        
         guard let window = self.view.window else { return }
         Router.switchToApp(window: window)
+        
     }
+    
 }

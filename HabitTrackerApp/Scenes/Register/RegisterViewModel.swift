@@ -42,5 +42,7 @@ extension RegisterViewModel: RegisterViewModelInterface {
                                            name: name,
                                            surname: surname,
                                            birthdate: birthdate)
+        
     }
+    
 }
