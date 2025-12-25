@@ -35,6 +35,12 @@
 		0FBFEEA92EF4208500DCF993 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEEA82EF4208500DCF993 /* LoginViewModel.swift */; };
 		0FBFEEC62EF439A500DCF993 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEEC52EF439A500DCF993 /* RegisterViewModel.swift */; };
 		0FBFEEC82EF563FD00DCF993 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEEC72EF563FD00DCF993 /* Router.swift */; };
+		0FBFEECC2EFC3D3C00DCF993 /* CalendarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FBFEECB2EFC3D3C00DCF993 /* CalendarCollectionViewCell.xib */; };
+		0FBFEECD2EFC3D3C00DCF993 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEECA2EFC3D3C00DCF993 /* CalendarCollectionViewCell.swift */; };
+		0FBFEED02EFC413900DCF993 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEECF2EFC413900DCF993 /* HomeViewModel.swift */; };
+		0FBFEED52EFC416E00DCF993 /* HabitCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FBFEED42EFC416E00DCF993 /* HabitCollectionViewCell.xib */; };
+		0FBFEED62EFC416E00DCF993 /* HabitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEED32EFC416E00DCF993 /* HabitCollectionViewCell.swift */; };
+		0FBFEED82EFC7EC900DCF993 /* CollectionViewFlowCustomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEED72EFC7EC900DCF993 /* CollectionViewFlowCustomizable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +69,12 @@
 		0FBFEEA82EF4208500DCF993 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		0FBFEEC52EF439A500DCF993 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		0FBFEEC72EF563FD00DCF993 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		0FBFEECA2EFC3D3C00DCF993 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		0FBFEECB2EFC3D3C00DCF993 /* CalendarCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCollectionViewCell.xib; sourceTree = "<group>"; };
+		0FBFEECF2EFC413900DCF993 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		0FBFEED32EFC416E00DCF993 /* HabitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCollectionViewCell.swift; sourceTree = "<group>"; };
+		0FBFEED42EFC416E00DCF993 /* HabitCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabitCollectionViewCell.xib; sourceTree = "<group>"; };
+		0FBFEED72EFC7EC900DCF993 /* CollectionViewFlowCustomizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowCustomizable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,10 +138,10 @@
 			isa = PBXGroup;
 			children = (
 				0FBFEEA32ED9BAE500DCF993 /* Register */,
-				0FBFEE992ED88F8B00DCF993 /* Profile */,
-				0FBFEE902ED88F4F00DCF993 /* Stats */,
 				0FBFEE7C2ED886FA00DCF993 /* Login */,
 				0FBFEE772ED886C500DCF993 /* Home  */,
+				0FBFEE902ED88F4F00DCF993 /* Stats */,
+				0FBFEE992ED88F8B00DCF993 /* Profile */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -149,6 +161,7 @@
 				0FBFEE8C2ED88AD800DCF993 /* MainTabBarController.swift */,
 				0FBFEEA12ED8A39300DCF993 /* AlertPresentable.swift */,
 				0FBFEEC72EF563FD00DCF993 /* Router.swift */,
+				0FBFEED72EFC7EC900DCF993 /* CollectionViewFlowCustomizable.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -156,8 +169,8 @@
 		0FBFEE772ED886C500DCF993 /* Home  */ = {
 			isa = PBXGroup;
 			children = (
-				0FBFEE782ED886DA00DCF993 /* HomeViewController.swift */,
-				0FBFEE792ED886DA00DCF993 /* HomeViewController.xib */,
+				0FBFEECE2EFC411400DCF993 /* HomeView */,
+				0FBFEEC92EFC3D0F00DCF993 /* HomeCustomCells */,
 			);
 			path = "Home ";
 			sourceTree = "<group>";
@@ -206,6 +219,43 @@
 				0FBFEEC52EF439A500DCF993 /* RegisterViewModel.swift */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		0FBFEEC92EFC3D0F00DCF993 /* HomeCustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				0FBFEED22EFC415500DCF993 /* HabitCollectionViewCell */,
+				0FBFEED12EFC414600DCF993 /* CalendarCollectionViewCell */,
+			);
+			path = HomeCustomCells;
+			sourceTree = "<group>";
+		};
+		0FBFEECE2EFC411400DCF993 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				0FBFEE792ED886DA00DCF993 /* HomeViewController.xib */,
+				0FBFEE782ED886DA00DCF993 /* HomeViewController.swift */,
+				0FBFEECF2EFC413900DCF993 /* HomeViewModel.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		0FBFEED12EFC414600DCF993 /* CalendarCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0FBFEECB2EFC3D3C00DCF993 /* CalendarCollectionViewCell.xib */,
+				0FBFEECA2EFC3D3C00DCF993 /* CalendarCollectionViewCell.swift */,
+			);
+			path = CalendarCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		0FBFEED22EFC415500DCF993 /* HabitCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0FBFEED42EFC416E00DCF993 /* HabitCollectionViewCell.xib */,
+				0FBFEED32EFC416E00DCF993 /* HabitCollectionViewCell.swift */,
+			);
+			path = HabitCollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,11 +330,13 @@
 				0FBFEE972ED88F8700DCF993 /* ProfileViewController.xib in Resources */,
 				0FBFEE7F2ED8871200DCF993 /* LoginViewController.xib in Resources */,
 				0FBFEE6E2ED8862A00DCF993 /* Assets.xcassets in Resources */,
+				0FBFEECC2EFC3D3C00DCF993 /* CalendarCollectionViewCell.xib in Resources */,
 				0FBFEE8F2ED88CA100DCF993 /* GoogleService-Info.plist in Resources */,
 				0FBFEE702ED8862A00DCF993 /* LaunchScreen.storyboard in Resources */,
 				0FBFEE932ED88F6A00DCF993 /* StatsViewController.xib in Resources */,
 				0FBFEE7A2ED886DA00DCF993 /* HomeViewController.xib in Resources */,
 				0FBFEEA72ED9BAF900DCF993 /* RegisterViewController.xib in Resources */,
+				0FBFEED52EFC416E00DCF993 /* HabitCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FBFEED02EFC413900DCF993 /* HomeViewModel.swift in Sources */,
 				0FBFEE802ED8871200DCF993 /* LoginViewController.swift in Sources */,
 				0FBFEE9C2ED895D500DCF993 /* AuthManager.swift in Sources */,
 				0FBFEEA22ED8A39300DCF993 /* AlertPresentable.swift in Sources */,
@@ -302,8 +355,11 @@
 				0FBFEE712ED8862A00DCF993 /* AppDelegate.swift in Sources */,
 				0FBFEE8D2ED88AD800DCF993 /* MainTabBarController.swift in Sources */,
 				0FBFEE722ED8862A00DCF993 /* SceneDelegate.swift in Sources */,
+				0FBFEED82EFC7EC900DCF993 /* CollectionViewFlowCustomizable.swift in Sources */,
 				0FBFEEC82EF563FD00DCF993 /* Router.swift in Sources */,
+				0FBFEECD2EFC3D3C00DCF993 /* CalendarCollectionViewCell.swift in Sources */,
 				0FBFEE982ED88F8700DCF993 /* ProfileViewController.swift in Sources */,
+				0FBFEED62EFC416E00DCF993 /* HabitCollectionViewCell.swift in Sources */,
 				0FBFEEA92EF4208500DCF993 /* LoginViewModel.swift in Sources */,
 				0FBFEEC62EF439A500DCF993 /* RegisterViewModel.swift in Sources */,
 				0FBFEE9E2ED89C2D00DCF993 /* AuthError.swift in Sources */,

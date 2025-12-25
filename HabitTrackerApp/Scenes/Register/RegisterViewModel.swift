@@ -21,7 +21,8 @@ class RegisterViewModel {
 extension RegisterViewModel: RegisterViewModelInterface {
     
     @MainActor
-    func signUp(email: String?, password: String?, name: String?, surname: String?, birthdate: Date?) async throws {
+    func signUp(email: String?,
+                password: String?, name: String?, surname: String?, birthdate: Date?) async throws {
         
         guard let email = email, !email.isEmpty,
               let password = password, !password.isEmpty,

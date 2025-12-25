@@ -20,9 +20,9 @@ class MainTabBarController: UITabBarController {
         let homeVC = HomeViewController(nibName: "HomeViewController", bundle: nil)
         let homeNav = UINavigationController(rootViewController: homeVC)
         
-        homeNav.tabBarItem = UITabBarItem(title: "Today",
-                                          image: UIImage(systemName: "checklist"),
-                                          selectedImage: UIImage(systemName: "checklist.checked"))
+        homeNav.tabBarItem = UITabBarItem(title: "Home",
+                                          image: UIImage(systemName: "house"),
+                                          selectedImage: UIImage(systemName: "house.fill"))
         
         let statsVC = StatsViewController(nibName: "StatsViewController", bundle: nil)
         let statsNav = UINavigationController(rootViewController: statsVC)
