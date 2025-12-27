@@ -54,14 +54,16 @@ extension HomeViewController: HomeViewControllerInterface {
     
     func performInitialScroll() {
         
-        if !hasInitialScrollPerformed {
-            if let index = viewModel.getScrollIndexForSelectedItem() {
-                
+        if !hasInitialScrollPerformed, let index = viewModel.getScrollIndexForSelectedItem() {
+            
+            DispatchQueue.main.async {
                 let indexPath = IndexPath(item: index, section: 0)
-                calendarCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-                hasInitialScrollPerformed = true
+                self.calendarCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+                self.hasInitialScrollPerformed = true
             }
+            
         }
+        
     }
     
 }
