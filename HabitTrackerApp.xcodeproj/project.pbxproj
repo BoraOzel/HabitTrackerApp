@@ -42,6 +42,9 @@
 		0FBFEED62EFC416E00DCF993 /* HabitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEED32EFC416E00DCF993 /* HabitCollectionViewCell.swift */; };
 		0FBFEED82EFC7EC900DCF993 /* CollectionViewFlowCustomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEED72EFC7EC900DCF993 /* CollectionViewFlowCustomizable.swift */; };
 		0FBFEEDA2EFDB8E500DCF993 /* Habits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEED92EFDB8E500DCF993 /* Habits.swift */; };
+		0FBFEEDF2F0002D000DCF993 /* AddHabitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FBFEEDE2F0002D000DCF993 /* AddHabitViewController.xib */; };
+		0FBFEEE02F0002D000DCF993 /* AddHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEEDD2F0002D000DCF993 /* AddHabitViewController.swift */; };
+		0FBFEEE22F0002DD00DCF993 /* AddHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEEE12F0002DD00DCF993 /* AddHabitViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +80,9 @@
 		0FBFEED42EFC416E00DCF993 /* HabitCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabitCollectionViewCell.xib; sourceTree = "<group>"; };
 		0FBFEED72EFC7EC900DCF993 /* CollectionViewFlowCustomizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowCustomizable.swift; sourceTree = "<group>"; };
 		0FBFEED92EFDB8E500DCF993 /* Habits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habits.swift; sourceTree = "<group>"; };
+		0FBFEEDD2F0002D000DCF993 /* AddHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitViewController.swift; sourceTree = "<group>"; };
+		0FBFEEDE2F0002D000DCF993 /* AddHabitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddHabitViewController.xib; sourceTree = "<group>"; };
+		0FBFEEE12F0002DD00DCF993 /* AddHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +145,7 @@
 		0FBFEE742ED8864500DCF993 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				0FBFEEDC2F0002B400DCF993 /* AddHabit */,
 				0FBFEEA32ED9BAE500DCF993 /* Register */,
 				0FBFEE7C2ED886FA00DCF993 /* Login */,
 				0FBFEE772ED886C500DCF993 /* Home  */,
@@ -261,6 +268,16 @@
 			path = HabitCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		0FBFEEDC2F0002B400DCF993 /* AddHabit */ = {
+			isa = PBXGroup;
+			children = (
+				0FBFEEDE2F0002D000DCF993 /* AddHabitViewController.xib */,
+				0FBFEEDD2F0002D000DCF993 /* AddHabitViewController.swift */,
+				0FBFEEE12F0002DD00DCF993 /* AddHabitViewModel.swift */,
+			);
+			path = AddHabit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -337,6 +354,7 @@
 				0FBFEE8F2ED88CA100DCF993 /* GoogleService-Info.plist in Resources */,
 				0FBFEE702ED8862A00DCF993 /* LaunchScreen.storyboard in Resources */,
 				0FBFEE932ED88F6A00DCF993 /* StatsViewController.xib in Resources */,
+				0FBFEEDF2F0002D000DCF993 /* AddHabitViewController.xib in Resources */,
 				0FBFEE7A2ED886DA00DCF993 /* HomeViewController.xib in Resources */,
 				0FBFEEA72ED9BAF900DCF993 /* RegisterViewController.xib in Resources */,
 				0FBFEED52EFC416E00DCF993 /* HabitCollectionViewCell.xib in Resources */,
@@ -363,6 +381,7 @@
 				0FBFEEC82EF563FD00DCF993 /* Router.swift in Sources */,
 				0FBFEECD2EFC3D3C00DCF993 /* CalendarCollectionViewCell.swift in Sources */,
 				0FBFEE982ED88F8700DCF993 /* ProfileViewController.swift in Sources */,
+				0FBFEEE02F0002D000DCF993 /* AddHabitViewController.swift in Sources */,
 				0FBFEED62EFC416E00DCF993 /* HabitCollectionViewCell.swift in Sources */,
 				0FBFEEA92EF4208500DCF993 /* LoginViewModel.swift in Sources */,
 				0FBFEEC62EF439A500DCF993 /* RegisterViewModel.swift in Sources */,
@@ -370,6 +389,7 @@
 				0FBFEE942ED88F6A00DCF993 /* StatsViewController.swift in Sources */,
 				0FBFEEA02ED89C3900DCF993 /* AppUser.swift in Sources */,
 				0FBFEE7B2ED886DA00DCF993 /* HomeViewController.swift in Sources */,
+				0FBFEEE22F0002DD00DCF993 /* AddHabitViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

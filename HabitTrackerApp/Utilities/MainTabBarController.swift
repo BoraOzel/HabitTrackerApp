@@ -12,6 +12,7 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabs()
+        setTabBarAppearance()
     }
     
     private func setupTabs() {
@@ -37,8 +38,21 @@ class MainTabBarController: UITabBarController {
                                           image: UIImage(systemName: "person"),
                                           selectedImage: UIImage(systemName: "person.fill"))
         
-        tabBarController?.tabBar.tintColor = UIColor.systemIndigo
         self.viewControllers = [homeNav, statsNav, profileNav]
+        
+    }
+    
+    private func setTabBarAppearance() {
+        
+        let appearance = UITabBarAppearance()
+
+        appearance.stackedLayoutAppearance.selected.iconColor = .systemIndigo
+        appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.systemIndigo]
+
+        tabBar.standardAppearance = appearance
+        tabBar.scrollEdgeAppearance = appearance
+        
+        tabBar.tintColor = .systemIndigo
         
     }
     
