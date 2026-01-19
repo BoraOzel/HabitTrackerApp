@@ -6,11 +6,14 @@
 //
 
 import Foundation
+import FirebaseFirestore
+import FirebaseAuth
 
 protocol HomeViewModelDelegate: AnyObject {
     func reloadData()
     func reloadItems(at indices: [Int])
     func scrollToDate(index: Int)
+    func updateHeader(title: String)
 }
 
 protocol HomeViewModelInterface {
@@ -25,7 +28,7 @@ protocol HomeViewModelInterface {
     func selectDate(index: Int)
     //func habit(index: Int) ->
     func getScrollIndexForSelectedItem() -> Int?
-    
+    func fetchUserDate()
 }
 
 class HomeViewModel {
@@ -35,6 +38,7 @@ class HomeViewModel {
     private(set) var dates: [Date] = []
     private(set) var selectedDate = Date()
     //private var habits: [Habit]
+    private var db = Firestore.firestore()
     
     private func setupCalendarData() {
         dates.removeAll()
@@ -58,6 +62,7 @@ extension HomeViewModel: HomeViewModelInterface {
     
     func viewDidLoad() {
         setupCalendarData()
+        fetchUserDate()
         delegate?.reloadData()
     }
     
@@ -66,7 +71,7 @@ extension HomeViewModel: HomeViewModelInterface {
     }
     
     func selectDate(index: Int) {
-    
+        
         let calendar = Calendar.current
         let oldIndex = dates.firstIndex(where: { calendar.isDate($0, inSameDayAs: selectedDate) })
         
@@ -87,6 +92,26 @@ extension HomeViewModel: HomeViewModelInterface {
         
         let calendar = Calendar.current
         return dates.firstIndex(where: { calendar.isDate($0, inSameDayAs: selectedDate) })
+        
+    }
+    
+    func fetchUserDate() {
+        
+        let id = AuthManager.shared.currentUser?.uid
+        
+        db.collection("users").document(id!).getDocument { snapshot, error  in  // remove force unwrap
+            
+            guard let document = snapshot, document.exists, let data = document.data() else {
+                print("document could not found.")
+                return
+            }
+            
+            if let name = data["name"] as? String {
+                let titleText = "Hi, \(name)"
+                self.delegate?.updateHeader(title: titleText)
+            }
+                
+        }
         
     }
     

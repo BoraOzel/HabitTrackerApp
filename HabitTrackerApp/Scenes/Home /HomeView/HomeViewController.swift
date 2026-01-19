@@ -10,10 +10,13 @@ import UIKit
 protocol HomeViewControllerInterface: AnyObject {
     func setupCollectionView()
     func performInitialScroll()
+    func navigateToHabitScreen(vc: UIViewController)
 }
+
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     @IBOutlet weak var habitCollectionView: UICollectionView!
     
@@ -33,7 +36,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func addButtonClicked(_ sender: Any) {
-        
+        navigateToHabitScreen(vc: AddHabitViewController())
     }
     
 }
@@ -64,6 +67,10 @@ extension HomeViewController: HomeViewControllerInterface {
             
         }
         
+    }
+    
+    func navigateToHabitScreen(vc: UIViewController) {
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
@@ -148,6 +155,14 @@ extension HomeViewController: HomeViewModelDelegate {
         
         let indexPath = IndexPath(item: index, section: 0)
         calendarCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+        
+    }
+    
+    func updateHeader(title: String) {
+        
+        DispatchQueue.main.async {
+            self.headerLabel.text = title
+        }
         
     }
 }
