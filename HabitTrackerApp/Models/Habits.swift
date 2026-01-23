@@ -8,17 +8,15 @@
 import Foundation
 
 struct Habits: Codable {
-    let id: String
     let userId: String
     
     var title: String
-    var description: String?
-    var iconSymbol: String
-    var hexColor: String
     
     var completedDates: [Date]
+    var selectedDays: [Int]
     
-    var targetCount: Int
+    var goalCount: Int
     var currentCount: Int
+    var goalUnit: String
     let createdAt: Date
 }

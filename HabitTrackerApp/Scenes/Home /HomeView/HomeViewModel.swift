@@ -28,7 +28,7 @@ protocol HomeViewModelInterface {
     func selectDate(index: Int)
     //func habit(index: Int) ->
     func getScrollIndexForSelectedItem() -> Int?
-    func fetchUserDate()
+    func fetchUserData()
 }
 
 class HomeViewModel {
@@ -62,7 +62,7 @@ extension HomeViewModel: HomeViewModelInterface {
     
     func viewDidLoad() {
         setupCalendarData()
-        fetchUserDate()
+        fetchUserData()
         delegate?.reloadData()
     }
     
@@ -95,7 +95,7 @@ extension HomeViewModel: HomeViewModelInterface {
         
     }
     
-    func fetchUserDate() {
+    func fetchUserData() {
         
         let id = AuthManager.shared.currentUser?.uid
         
@@ -110,9 +110,7 @@ extension HomeViewModel: HomeViewModelInterface {
                 let titleText = "Hi, \(name)"
                 self.delegate?.updateHeader(title: titleText)
             }
-                
         }
-        
     }
     
 }

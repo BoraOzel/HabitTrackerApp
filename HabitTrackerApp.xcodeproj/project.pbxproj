@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F105A0C2F1F8A980020D631 /* DayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F105A0B2F1F8A980020D631 /* DayButton.swift */; };
 		0FBFEE6E2ED8862A00DCF993 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FBFEE682ED8862A00DCF993 /* Assets.xcassets */; };
 		0FBFEE702ED8862A00DCF993 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FBFEE6B2ED8862A00DCF993 /* LaunchScreen.storyboard */; };
 		0FBFEE712ED8862A00DCF993 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEE672ED8862A00DCF993 /* AppDelegate.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F105A0B2F1F8A980020D631 /* DayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayButton.swift; sourceTree = "<group>"; };
 		0FBFEE4F2ED885A700DCF993 /* HabitTrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitTrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FBFEE672ED8862A00DCF993 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FBFEE682ED8862A00DCF993 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				0FBFEEA12ED8A39300DCF993 /* AlertPresentable.swift */,
 				0FBFEEC72EF563FD00DCF993 /* Router.swift */,
 				0FBFEED72EFC7EC900DCF993 /* CollectionViewFlowCustomizable.swift */,
+				0F105A0B2F1F8A980020D631 /* DayButton.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				0FBFEEA62ED9BAF900DCF993 /* RegisterViewController.swift in Sources */,
 				0FBFEE712ED8862A00DCF993 /* AppDelegate.swift in Sources */,
 				0FBFEEDA2EFDB8E500DCF993 /* Habits.swift in Sources */,
+				0F105A0C2F1F8A980020D631 /* DayButton.swift in Sources */,
 				0FBFEE8D2ED88AD800DCF993 /* MainTabBarController.swift in Sources */,
 				0FBFEE722ED8862A00DCF993 /* SceneDelegate.swift in Sources */,
 				0FBFEED82EFC7EC900DCF993 /* CollectionViewFlowCustomizable.swift in Sources */,

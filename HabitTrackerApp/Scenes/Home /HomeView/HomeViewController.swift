@@ -124,8 +124,8 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if collectionView == calendarCollectionView {
-            let width = collectionView.frame.width / 6
-            return CGSize(width: width, height: collectionView.frame.height * 0.6)
+            let width = collectionView.frame.width / 5.8
+            return CGSize(width: width, height: collectionView.frame.height * 0.58)
         }
         return CGSize(width: 80, height: 80)
     }
