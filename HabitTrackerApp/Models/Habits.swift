@@ -14,6 +14,7 @@ struct Habits: Codable {
     
     var completedDates: [Date]
     var selectedDays: [Int]
+    var reminderTime: Date
     
     var goalCount: Int
     var currentCount: Int

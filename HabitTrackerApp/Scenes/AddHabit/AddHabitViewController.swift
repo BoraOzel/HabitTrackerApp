@@ -30,22 +30,23 @@ class AddHabitViewController: UIViewController,
 
     
     @IBAction func saveButtonClicked(_ sender: Any) {
-     
-        let frequency = getSelectedFrequency()
-        
-        if frequency.isEmpty {
-            showAlert(title: "Error",
-                      message: "Please select at least one day.",
-                      buttonText: "OK")
-        }
         
         let selectedDays = getSelectedFrequency()
-
+        
+        if selectedDays.isEmpty {
+           showAlert(title: "Error",
+                     message: "Please select at least 1 day.",
+                     buttonText: "OK")
+            return
+        }
+        
         if let title = habitNameTextField.text,
            let goalCount = goalAmountTextField.text,
-           let goalUnit = goalUnitTextField.text {
+           let goalUnit = goalUnitTextField.text
+        {
+            let reminderTime = remindDateTimePicker.date
             
-            viewModel.saveHabit(title: title,selectedDays: selectedDays, goalCount: Int(goalCount)!, goalUnit: goalUnit)
+            viewModel.saveHabit(title: title,selectedDays: selectedDays, reminderTime: reminderTime, goalCount: Int(goalCount)!, goalUnit: goalUnit)
             showAlert(title: "Saved",
                       message: "Your habit saved successfully.",
                       buttonText: "OK")

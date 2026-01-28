@@ -10,7 +10,7 @@ import FirebaseAuth
 import FirebaseFirestore
 
 protocol AddHabitViewModelInterface {
-    func saveHabit(title: String,selectedDays: [Int], goalCount: Int, goalUnit: String)
+    func saveHabit(title: String,selectedDays: [Int],reminderTime: Date, goalCount: Int, goalUnit: String)
 }
 
 class AddHabitViewModel {
@@ -21,7 +21,7 @@ class AddHabitViewModel {
 
 extension AddHabitViewModel: AddHabitViewModelInterface {
     
-    func saveHabit(title: String,selectedDays: [Int], goalCount: Int, goalUnit: String) {
+    func saveHabit(title: String,selectedDays: [Int], reminderTime: Date, goalCount: Int, goalUnit: String) {
         
         let habitId = UUID().uuidString
         
@@ -29,6 +29,7 @@ extension AddHabitViewModel: AddHabitViewModelInterface {
                               title: title,
                               completedDates: [],
                               selectedDays: selectedDays,
+                              reminderTime: reminderTime,
                               goalCount: goalCount,
                               currentCount: 0,
                               goalUnit: goalUnit,
