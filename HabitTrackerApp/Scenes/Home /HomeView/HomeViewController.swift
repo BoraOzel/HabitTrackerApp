@@ -53,20 +53,18 @@ extension HomeViewController: HomeViewControllerInterface {
         calendarCollectionView.register(UINib(nibName: "CalendarCollectionViewCell", bundle: nil),
                                         forCellWithReuseIdentifier: "CalendarCollectionViewCell")
         
+        habitCollectionView.register(UINib(nibName: "HabitCollectionViewCell", bundle: nil),
+                                     forCellWithReuseIdentifier: "HabitCollectionViewCell")
     }
     
     func performInitialScroll() {
-        
         if !hasInitialScrollPerformed, let index = viewModel.getScrollIndexForSelectedItem() {
-            
             DispatchQueue.main.async {
                 let indexPath = IndexPath(item: index, section: 0)
                 self.calendarCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
                 self.hasInitialScrollPerformed = true
             }
-            
         }
-        
     }
     
     func navigateToHabitScreen(vc: UIViewController) {
@@ -82,6 +80,9 @@ extension HomeViewController: UICollectionViewDataSource {
         if collectionView == calendarCollectionView {
             return viewModel.numberOfDates
         }
+        else if collectionView == habitCollectionView {
+            return viewModel.numberOfHabits
+        }
         return 0
         
     }
@@ -89,22 +90,35 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView == calendarCollectionView {
-            
-            guard let cell: CalendarCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCollectionViewCell",
-                                                                                            for: indexPath) as? CalendarCollectionViewCell else {
+            guard let calendarCell: CalendarCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCollectionViewCell",
+                                                                                            for: indexPath) as? CalendarCollectionViewCell
+            else {
                 return UICollectionViewCell()
             }
             
             let date = viewModel.date(index: indexPath.row)
             let isSelected = Calendar.current.isDate(date, inSameDayAs: viewModel.selectedDate)
             
-            cell.configure(date: date, isSelected: isSelected)
-            cell.configureCell(cell: cell)
+            calendarCell.configure(date: date, isSelected: isSelected)
+            calendarCell.configureCell(cell: calendarCell)
             
-            return cell
+            return calendarCell
             
         }
-        
+        else if collectionView == habitCollectionView {
+            guard let habitCell: HabitCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HabitCollectionViewCell",
+                                                                                         for: indexPath) as? HabitCollectionViewCell
+            else {
+                return UICollectionViewCell()
+            }
+            
+            let habit = viewModel.habit(index: indexPath.row)
+            habitCell.configure(habit: habit)
+            
+            return habitCell
+            
+        }
+    
         return UICollectionViewCell()
         
     }
@@ -114,7 +128,9 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.selectDate(index: indexPath.row)
+        if collectionView == calendarCollectionView {
+            viewModel.selectDate(index: indexPath.row)
+        }
     }
     
 }
@@ -125,7 +141,15 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         
         if collectionView == calendarCollectionView {
             let width = collectionView.frame.width / 5.8
-            return CGSize(width: width, height: collectionView.frame.height * 0.58)
+            let height = collectionView.frame.height * 0.58
+            
+            return CGSize(width: width, height: height)
+        }
+        else if collectionView == habitCollectionView {
+            let width = collectionView.frame.width
+            let height = collectionView.frame.height / 4
+            
+            return CGSize(width: width, height: height)
         }
         return CGSize(width: 80, height: 80)
     }
@@ -134,11 +158,10 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
 extension HomeViewController: HomeViewModelDelegate {
     func reloadData() {
-        
         DispatchQueue.main.async {
             self.calendarCollectionView.reloadData()
+            self.habitCollectionView.reloadData()
         }
-        
     }
     
     func reloadItems(at indices: [Int]) {

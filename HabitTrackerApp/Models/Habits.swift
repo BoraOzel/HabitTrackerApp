@@ -11,6 +11,7 @@ struct Habits: Codable {
     let userId: String
     
     var title: String
+    var streak: Int?
     
     var completedDates: [Date]
     var selectedDays: [Int]

@@ -21,14 +21,16 @@ protocol HomeViewModelInterface {
     var dates: [Date] { get }
     var selectedDate: Date { get }
     var numberOfDates: Int {get}
-    //var numberOfHabits: Int { get }
+    var numberOfHabits: Int { get }
     
     func viewDidLoad()
     func date(index: Int) -> Date
     func selectDate(index: Int)
-    //func habit(index: Int) ->
+    func habit(index: Int) -> Habits
     func getScrollIndexForSelectedItem() -> Int?
     func fetchUserData()
+    func fetchHabits()
+    func filterHabitsForSelectedDate()
 }
 
 class HomeViewModel {
@@ -37,7 +39,8 @@ class HomeViewModel {
     
     private(set) var dates: [Date] = []
     private(set) var selectedDate = Date()
-    //private var habits: [Habit]
+    private var habits: [Habits] = []
+    private var displayedHabits: [Habits] = []
     private var db = Firestore.firestore()
     
     private func setupCalendarData() {
@@ -60,14 +63,23 @@ extension HomeViewModel: HomeViewModelInterface {
         return dates.count
     }
     
+    var numberOfHabits: Int {
+        return displayedHabits.count
+    }
+    
     func viewDidLoad() {
         setupCalendarData()
         fetchUserData()
+        fetchHabits()
         delegate?.reloadData()
     }
     
     func date(index: Int) -> Date {
         return dates[index]
+    }
+    
+    func habit(index: Int) -> Habits {
+        return displayedHabits[index]
     }
     
     func selectDate(index: Int) {
@@ -76,6 +88,7 @@ extension HomeViewModel: HomeViewModelInterface {
         let oldIndex = dates.firstIndex(where: { calendar.isDate($0, inSameDayAs: selectedDate) })
         
         self.selectedDate = dates[index]
+        filterHabitsForSelectedDate()
         
         var indicesToReload: [Int] = [index]
         
@@ -111,6 +124,37 @@ extension HomeViewModel: HomeViewModelInterface {
                 self.delegate?.updateHeader(title: titleText)
             }
         }
+    }
+    
+    func fetchHabits() {
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        db.collection("habits")
+            .whereField("userId", isEqualTo: uid)
+            .order(by: "createdAt", descending: true).getDocuments { [weak self] snapshot, error  in
+                
+                guard let self = self else { return }
+                
+                guard let documents = snapshot?.documents else { return }
+                
+                self.habits = documents.compactMap{ document -> Habits? in
+                    return try? document.data(as: Habits.self)
+                }
+                self.filterHabitsForSelectedDate()
+            }
+    }
+    
+    func filterHabitsForSelectedDate() {
+        
+        let calendar = Calendar.current
+        let weekday = calendar.component(.weekday, from: selectedDate)
+        
+        displayedHabits = habits.filter { habit in
+            return habit.selectedDays.contains(weekday)
+        }
+        delegate?.reloadData()
+        
     }
     
 }
