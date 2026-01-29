@@ -24,21 +24,14 @@ class MainTabBarController: UITabBarController {
                                           image: UIImage(systemName: "house"),
                                           selectedImage: UIImage(systemName: "house.fill"))
         
-        let statsVC = StatsViewController(nibName: "StatsViewController", bundle: nil)
-        let statsNav = UINavigationController(rootViewController: statsVC)
+        let settingsVC = SettingsViewController(nibName: "SettingsViewController", bundle: nil)
+        let settingsNav = UINavigationController(rootViewController: settingsVC)
         
-        statsNav.tabBarItem = UITabBarItem(title: "Stats",
-                                          image: UIImage(systemName: "chart.bar"),
-                                          selectedImage: UIImage(systemName: "chart.bar.fill"))
+        settingsNav.tabBarItem = UITabBarItem(title: "Settings",
+                                          image: UIImage(systemName: "gear"),
+                                          selectedImage: UIImage(systemName: "gear.fill"))
         
-        let profileVC = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
-        let profileNav = UINavigationController(rootViewController: profileVC)
-        
-        profileNav.tabBarItem = UITabBarItem(title: "Profile",
-                                          image: UIImage(systemName: "person"),
-                                          selectedImage: UIImage(systemName: "person.fill"))
-        
-        self.viewControllers = [homeNav, statsNav, profileNav]
+        self.viewControllers = [homeNav, settingsNav]
         
     }
     

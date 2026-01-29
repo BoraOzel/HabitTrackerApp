@@ -23,10 +23,8 @@
 		0FBFEE8B2ED88AA100DCF993 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0FBFEE8A2ED88AA100DCF993 /* FirebaseStorage */; };
 		0FBFEE8D2ED88AD800DCF993 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEE8C2ED88AD800DCF993 /* MainTabBarController.swift */; };
 		0FBFEE8F2ED88CA100DCF993 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FBFEE8E2ED88CA100DCF993 /* GoogleService-Info.plist */; };
-		0FBFEE932ED88F6A00DCF993 /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FBFEE922ED88F6A00DCF993 /* StatsViewController.xib */; };
-		0FBFEE942ED88F6A00DCF993 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEE912ED88F6A00DCF993 /* StatsViewController.swift */; };
-		0FBFEE972ED88F8700DCF993 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FBFEE962ED88F8700DCF993 /* ProfileViewController.xib */; };
-		0FBFEE982ED88F8700DCF993 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEE952ED88F8700DCF993 /* ProfileViewController.swift */; };
+		0FBFEE972ED88F8700DCF993 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FBFEE962ED88F8700DCF993 /* SettingsViewController.xib */; };
+		0FBFEE982ED88F8700DCF993 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEE952ED88F8700DCF993 /* SettingsViewController.swift */; };
 		0FBFEE9C2ED895D500DCF993 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEE9B2ED895D500DCF993 /* AuthManager.swift */; };
 		0FBFEE9E2ED89C2D00DCF993 /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEE9D2ED89C2D00DCF993 /* AuthError.swift */; };
 		0FBFEEA02ED89C3900DCF993 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEE9F2ED89C3900DCF993 /* AppUser.swift */; };
@@ -62,10 +60,8 @@
 		0FBFEE7E2ED8871200DCF993 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		0FBFEE8C2ED88AD800DCF993 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		0FBFEE8E2ED88CA100DCF993 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		0FBFEE912ED88F6A00DCF993 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
-		0FBFEE922ED88F6A00DCF993 /* StatsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatsViewController.xib; sourceTree = "<group>"; };
-		0FBFEE952ED88F8700DCF993 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		0FBFEE962ED88F8700DCF993 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		0FBFEE952ED88F8700DCF993 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		0FBFEE962ED88F8700DCF993 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		0FBFEE9B2ED895D500DCF993 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		0FBFEE9D2ED89C2D00DCF993 /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
 		0FBFEE9F2ED89C3900DCF993 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
@@ -151,7 +147,6 @@
 				0FBFEEA32ED9BAE500DCF993 /* Register */,
 				0FBFEE7C2ED886FA00DCF993 /* Login */,
 				0FBFEE772ED886C500DCF993 /* Home  */,
-				0FBFEE902ED88F4F00DCF993 /* Stats */,
 				0FBFEE992ED88F8B00DCF993 /* Profile */,
 			);
 			path = Scenes;
@@ -198,20 +193,11 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		0FBFEE902ED88F4F00DCF993 /* Stats */ = {
-			isa = PBXGroup;
-			children = (
-				0FBFEE912ED88F6A00DCF993 /* StatsViewController.swift */,
-				0FBFEE922ED88F6A00DCF993 /* StatsViewController.xib */,
-			);
-			path = Stats;
-			sourceTree = "<group>";
-		};
 		0FBFEE992ED88F8B00DCF993 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				0FBFEE952ED88F8700DCF993 /* ProfileViewController.swift */,
-				0FBFEE962ED88F8700DCF993 /* ProfileViewController.xib */,
+				0FBFEE952ED88F8700DCF993 /* SettingsViewController.swift */,
+				0FBFEE962ED88F8700DCF993 /* SettingsViewController.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -350,13 +336,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FBFEE972ED88F8700DCF993 /* ProfileViewController.xib in Resources */,
+				0FBFEE972ED88F8700DCF993 /* SettingsViewController.xib in Resources */,
 				0FBFEE7F2ED8871200DCF993 /* LoginViewController.xib in Resources */,
 				0FBFEE6E2ED8862A00DCF993 /* Assets.xcassets in Resources */,
 				0FBFEECC2EFC3D3C00DCF993 /* CalendarCollectionViewCell.xib in Resources */,
 				0FBFEE8F2ED88CA100DCF993 /* GoogleService-Info.plist in Resources */,
 				0FBFEE702ED8862A00DCF993 /* LaunchScreen.storyboard in Resources */,
-				0FBFEE932ED88F6A00DCF993 /* StatsViewController.xib in Resources */,
 				0FBFEEDF2F0002D000DCF993 /* AddHabitViewController.xib in Resources */,
 				0FBFEE7A2ED886DA00DCF993 /* HomeViewController.xib in Resources */,
 				0FBFEEA72ED9BAF900DCF993 /* RegisterViewController.xib in Resources */,
@@ -384,13 +369,12 @@
 				0FBFEED82EFC7EC900DCF993 /* CollectionViewFlowCustomizable.swift in Sources */,
 				0FBFEEC82EF563FD00DCF993 /* Router.swift in Sources */,
 				0FBFEECD2EFC3D3C00DCF993 /* CalendarCollectionViewCell.swift in Sources */,
-				0FBFEE982ED88F8700DCF993 /* ProfileViewController.swift in Sources */,
+				0FBFEE982ED88F8700DCF993 /* SettingsViewController.swift in Sources */,
 				0FBFEEE02F0002D000DCF993 /* AddHabitViewController.swift in Sources */,
 				0FBFEED62EFC416E00DCF993 /* HabitCollectionViewCell.swift in Sources */,
 				0FBFEEA92EF4208500DCF993 /* LoginViewModel.swift in Sources */,
 				0FBFEEC62EF439A500DCF993 /* RegisterViewModel.swift in Sources */,
 				0FBFEE9E2ED89C2D00DCF993 /* AuthError.swift in Sources */,
-				0FBFEE942ED88F6A00DCF993 /* StatsViewController.swift in Sources */,
 				0FBFEEA02ED89C3900DCF993 /* AppUser.swift in Sources */,
 				0FBFEE7B2ED886DA00DCF993 /* HomeViewController.swift in Sources */,
 				0FBFEEE22F0002DD00DCF993 /* AddHabitViewModel.swift in Sources */,

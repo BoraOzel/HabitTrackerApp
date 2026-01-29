@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 struct Habits: Codable {
+    @DocumentID var id: String?
+    
     let userId: String
     
     var title: String
@@ -21,4 +24,15 @@ struct Habits: Codable {
     var currentCount: Int
     var goalUnit: String
     let createdAt: Date
+}
+
+extension Habits {
+    var isCompletedToday: Bool {
+        let calendar = Calendar.current
+        let today = Date()
+        
+        return completedDates.contains { date in
+            calendar.isDate(date, inSameDayAs: today)
+        }
+    }
 }

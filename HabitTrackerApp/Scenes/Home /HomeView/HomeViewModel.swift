@@ -24,6 +24,7 @@ protocol HomeViewModelInterface {
     var numberOfHabits: Int { get }
     
     func viewDidLoad()
+    func viewWillAppear()
     func date(index: Int) -> Date
     func selectDate(index: Int)
     func habit(index: Int) -> Habits
@@ -31,6 +32,7 @@ protocol HomeViewModelInterface {
     func fetchUserData()
     func fetchHabits()
     func filterHabitsForSelectedDate()
+    func completeHabit(index: Int)
 }
 
 class HomeViewModel {
@@ -72,6 +74,10 @@ extension HomeViewModel: HomeViewModelInterface {
         fetchUserData()
         fetchHabits()
         delegate?.reloadData()
+    }
+    
+    func viewWillAppear() {
+        fetchHabits()
     }
     
     func date(index: Int) -> Date {
@@ -155,6 +161,45 @@ extension HomeViewModel: HomeViewModelInterface {
         }
         delegate?.reloadData()
         
+    }
+    
+    func completeHabit(index: Int) {
+        
+        var habit = displayedHabits[index]
+        
+        let today = Date()
+        let calendar = Calendar.current
+        
+        let isCompletedToday = habit.completedDates.contains { date in
+            calendar.isDate(date, inSameDayAs: today)
+        }
+        
+        if isCompletedToday {
+            habit.completedDates.removeAll { date in
+                calendar.isDate(date, inSameDayAs: today)
+            }
+            habit.currentCount = max(0, habit.currentCount - 1)
+        }
+        else {
+            habit.completedDates.append(today)
+            habit.currentCount += 1
+        }
+        displayedHabits[index] = habit
+        
+        if let indexInAll = habits.firstIndex(where: { $0.id == habit.id }) {
+            habits[indexInAll] = habit
+        }
+        delegate?.reloadItems(at: [index])
+        
+        guard let documentId = habit.id else {
+            print("Document ID can not found.")
+            return
+        }
+        
+        db.collection("habits").document(documentId).updateData([
+            "currentCount": habit.currentCount,
+            "completedDates": habit.completedDates
+        ])
     }
     
 }

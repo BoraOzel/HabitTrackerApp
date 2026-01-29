@@ -31,6 +31,10 @@ class HomeViewController: UIViewController {
         viewModel.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.viewWillAppear()
+    }
+    
     override func viewDidLayoutSubviews() {
         performInitialScroll()
     }
@@ -115,6 +119,10 @@ extension HomeViewController: UICollectionViewDataSource {
             let habit = viewModel.habit(index: indexPath.row)
             habitCell.configure(habit: habit)
             
+            habitCell.onCompleteTapped = {
+                self.viewModel.completeHabit(index: indexPath.row)
+            }
+            
             return habitCell
             
         }
@@ -158,10 +166,12 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
 extension HomeViewController: HomeViewModelDelegate {
     func reloadData() {
+        
         DispatchQueue.main.async {
             self.calendarCollectionView.reloadData()
             self.habitCollectionView.reloadData()
         }
+        
     }
     
     func reloadItems(at indices: [Int]) {
@@ -170,6 +180,7 @@ extension HomeViewController: HomeViewModelDelegate {
         
         DispatchQueue.main.async {
             self.calendarCollectionView.reloadItems(at: indexPathsToReload)
+            self.habitCollectionView.reloadItems(at: indexPathsToReload)
         }
         
     }
@@ -188,4 +199,5 @@ extension HomeViewController: HomeViewModelDelegate {
         }
         
     }
+    
 }
