@@ -117,7 +117,7 @@ extension HomeViewController: UICollectionViewDataSource {
             }
             
             let habit = viewModel.habit(index: indexPath.row)
-            habitCell.configure(habit: habit)
+            habitCell.configure(habit: habit, selectedDate: viewModel.selectedDate)
             
             habitCell.onCompleteTapped = {
                 self.viewModel.completeHabit(index: indexPath.row)

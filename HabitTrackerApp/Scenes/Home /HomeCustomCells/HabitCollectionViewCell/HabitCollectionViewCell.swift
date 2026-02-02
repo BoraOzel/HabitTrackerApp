@@ -22,14 +22,20 @@ class HabitCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func configure(habit: Habits) {
+    func configure(habit: Habits, selectedDate: Date) {
         
         habitNameLabel.text = habit.title
         goalLabel.text = "\(habit.goalCount) \(habit.goalUnit)"
         streakLabel.text = "⚡️ \(habit.streak ?? 0)"
         setupGesture()
         
-        if habit.isCompletedToday {
+        let calendar = Calendar.current
+        
+        let isCompletedOnSelectedDate = habit.completedDates.contains { date in
+            calendar.isDate(date, inSameDayAs: selectedDate)
+        }
+        
+        if isCompletedOnSelectedDate {
             checkmarkImageView.image = UIImage(systemName: "checkmark.circle.fill")
             checkmarkImageView.tintColor = .systemGreen
             containerView.alpha = 0.8

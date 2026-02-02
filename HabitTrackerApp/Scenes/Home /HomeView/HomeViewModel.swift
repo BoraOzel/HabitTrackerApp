@@ -33,6 +33,7 @@ protocol HomeViewModelInterface {
     func fetchHabits()
     func filterHabitsForSelectedDate()
     func completeHabit(index: Int)
+    func calculateStreak(completedDates: [Date], selectedDays: [Int]) -> Int
 }
 
 class HomeViewModel {
@@ -145,10 +146,18 @@ extension HomeViewModel: HomeViewModelInterface {
                 guard let documents = snapshot?.documents else { return }
                 
                 self.habits = documents.compactMap{ document -> Habits? in
-                    return try? document.data(as: Habits.self)
+                    var habit =  try? document.data(as: Habits.self)
+                    
+                    if let habitDates = habit?.completedDates,
+                       let selectedDays = habit?.selectedDays {
+                        habit?.streak = self.calculateStreak(completedDates: habitDates, selectedDays: selectedDays)
+                    }
+                    
+                    return habit
                 }
                 self.filterHabitsForSelectedDate()
             }
+        
     }
     
     func filterHabitsForSelectedDate() {
@@ -167,7 +176,7 @@ extension HomeViewModel: HomeViewModelInterface {
         
         var habit = displayedHabits[index]
         
-        let today = Date()
+        let today = selectedDate
         let calendar = Calendar.current
         
         let isCompletedToday = habit.completedDates.contains { date in
@@ -184,6 +193,9 @@ extension HomeViewModel: HomeViewModelInterface {
             habit.completedDates.append(today)
             habit.currentCount += 1
         }
+        
+        habit.streak = calculateStreak(completedDates: habit.completedDates, selectedDays: habit.selectedDays)
+        
         displayedHabits[index] = habit
         
         if let indexInAll = habits.firstIndex(where: { $0.id == habit.id }) {
@@ -200,6 +212,65 @@ extension HomeViewModel: HomeViewModelInterface {
             "currentCount": habit.currentCount,
             "completedDates": habit.completedDates
         ])
+    }
+    
+    func calculateStreak(completedDates: [Date], selectedDays: [Int]) -> Int {
+        
+        guard !completedDates.isEmpty else { return 0 }
+        guard !selectedDays.isEmpty else { return 0 }
+        
+        let sortedDates = completedDates.sorted { $0 > $1 }
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        
+        var lastCompletedDate = calendar.startOfDay(for: sortedDates.first!)
+        var checkDate = today
+        
+        while checkDate > lastCompletedDate {
+            let weekday = calendar.component(.weekday, from: checkDate)
+            
+            if selectedDays.contains(weekday) {
+                if !calendar.isDate(checkDate, inSameDayAs: today) {
+                    return 0
+                }
+            }
+            guard let prevDate = calendar.date(byAdding: .day, value: -1, to: checkDate) else { break }
+            checkDate = prevDate
+        }
+        
+        var streakCount = 1
+        
+        for i in 0 ..< sortedDates.count - 1 {
+            let currentDate = calendar.startOfDay(for: sortedDates[i])
+            let previousDate = calendar.startOfDay(for: sortedDates[i+1])
+            
+            var tempDate = currentDate
+            var gapBroken = false
+            
+            while true {
+                guard let oneDayBefore = calendar.date(byAdding: .day, value: -1, to: tempDate) else { break }
+                tempDate = oneDayBefore
+                
+                if calendar.isDate(tempDate, inSameDayAs: previousDate) {
+                    break
+                }
+                
+                let weekday = calendar.component(.weekday, from: tempDate)
+                
+                if selectedDays.contains(weekday) {
+                    gapBroken = true
+                    break
+                }
+            }
+            if gapBroken {
+                break
+            }
+            else {
+                streakCount += 1
+            }
+        }
+        
+        return streakCount
     }
     
 }
