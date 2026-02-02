@@ -49,7 +49,9 @@ class AddHabitViewController: UIViewController,
             viewModel.saveHabit(title: title,selectedDays: selectedDays, reminderTime: reminderTime, goalCount: Int(goalCount)!, goalUnit: goalUnit)
             showAlert(title: "Saved",
                       message: "Your habit saved successfully.",
-                      buttonText: "OK")
+                      buttonText: "OK") { _ in
+                self.navigationController?.popViewController(animated: true)
+            }
         }
         else {
             showAlert(title: "Error",
