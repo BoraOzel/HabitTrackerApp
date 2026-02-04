@@ -7,10 +7,12 @@
 
 import UIKit
 
-protocol HomeViewControllerInterface: AnyObject {
+protocol HomeViewControllerInterface: AnyObject,
+                                      SpinnerDisplayable {
     func setupCollectionView()
     func performInitialScroll()
     func navigateToHabitScreen(vc: UIViewController)
+    func showLoading(show: Bool)
 }
 
 
@@ -27,6 +29,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        viewModel.view = self
         viewModel.delegate = self
         viewModel.viewDidLoad()
     }
@@ -73,6 +76,10 @@ extension HomeViewController: HomeViewControllerInterface {
     
     func navigateToHabitScreen(vc: UIViewController) {
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func showLoading(show: Bool) {
+        show ? showProgress() : removeProgress()
     }
     
 }

@@ -17,6 +17,7 @@ protocol HomeViewModelDelegate: AnyObject {
 }
 
 protocol HomeViewModelInterface {
+    var view: HomeViewControllerInterface? { get set }
     var delegate: HomeViewModelDelegate? { get set }
     var dates: [Date] { get }
     var selectedDate: Date { get }
@@ -42,12 +43,14 @@ class HomeViewModel {
     private let habitService: HabitServiceProtocol
     
     weak var delegate: HomeViewModelDelegate?
+    weak var view: HomeViewControllerInterface?
     
     private(set) var dates: [Date] = []
     private(set) var selectedDate = Date()
     private var habits: [Habits] = []
     private var displayedHabits: [Habits] = []
     private var db = Firestore.firestore()
+    private var isLoading = false
     
     init(habitService: HabitServiceProtocol) {
         self.habitService = habitService
@@ -126,15 +129,19 @@ extension HomeViewModel: HomeViewModelInterface {
         
         guard let uid = AuthManager.shared.currentUser?.uid else { return }
         
+        self.view?.showLoading(show: true)
+        
         Task {
             do {
                 let user = try await habitService.fetchUser(userId: uid)
                 let titleText = "Hi, \(user.name)"
                 self.delegate?.updateHeader(title: titleText)
+                self.view?.showLoading(show: false)
             }
             catch {
                 print(error.localizedDescription)
             }
+            self.view?.showLoading(show: false)
         }
         
     }
@@ -142,6 +149,8 @@ extension HomeViewModel: HomeViewModelInterface {
     func fetchHabits() {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        self.view?.showLoading(show: true)
         
         Task {
             do {
@@ -151,11 +160,13 @@ extension HomeViewModel: HomeViewModelInterface {
                     self.habits = fetchedHabits
                     self.filterHabitsForSelectedDate()
                     self.delegate?.reloadData()
+                    self.view?.showLoading(show: false)
                 }
             }
             catch {
                 print(error.localizedDescription)
             }
+            self.view?.showLoading(show: false)
         }
         
     }

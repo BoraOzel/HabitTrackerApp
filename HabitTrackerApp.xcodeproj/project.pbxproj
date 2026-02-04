@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0F105A0C2F1F8A980020D631 /* DayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F105A0B2F1F8A980020D631 /* DayButton.swift */; };
 		0F105A0E2F333F620020D631 /* HabitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F105A0D2F333F610020D631 /* HabitService.swift */; };
+		0F105A102F3352490020D631 /* SpinnerDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F105A0F2F3352490020D631 /* SpinnerDisplayable.swift */; };
+		0F105A132F3352EA0020D631 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0F105A122F3352EA0020D631 /* Lottie */; };
 		0FBFEE6E2ED8862A00DCF993 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FBFEE682ED8862A00DCF993 /* Assets.xcassets */; };
 		0FBFEE702ED8862A00DCF993 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FBFEE6B2ED8862A00DCF993 /* LaunchScreen.storyboard */; };
 		0FBFEE712ED8862A00DCF993 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEE672ED8862A00DCF993 /* AppDelegate.swift */; };
@@ -50,6 +52,7 @@
 /* Begin PBXFileReference section */
 		0F105A0B2F1F8A980020D631 /* DayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayButton.swift; sourceTree = "<group>"; };
 		0F105A0D2F333F610020D631 /* HabitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitService.swift; sourceTree = "<group>"; };
+		0F105A0F2F3352490020D631 /* SpinnerDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerDisplayable.swift; sourceTree = "<group>"; };
 		0FBFEE4F2ED885A700DCF993 /* HabitTrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitTrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FBFEE672ED8862A00DCF993 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FBFEE682ED8862A00DCF993 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -95,6 +98,7 @@
 				0FBFEE852ED88AA100DCF993 /* FirebaseCore in Frameworks */,
 				0FBFEE8B2ED88AA100DCF993 /* FirebaseStorage in Frameworks */,
 				0FBFEE832ED88AA100DCF993 /* FirebaseAuth in Frameworks */,
+				0F105A132F3352EA0020D631 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +176,7 @@
 				0FBFEEC72EF563FD00DCF993 /* Router.swift */,
 				0FBFEED72EFC7EC900DCF993 /* CollectionViewFlowCustomizable.swift */,
 				0F105A0B2F1F8A980020D631 /* DayButton.swift */,
+				0F105A0F2F3352490020D631 /* SpinnerDisplayable.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -292,6 +297,7 @@
 				0FBFEE862ED88AA100DCF993 /* FirebaseDatabase */,
 				0FBFEE882ED88AA100DCF993 /* FirebaseFirestore */,
 				0FBFEE8A2ED88AA100DCF993 /* FirebaseStorage */,
+				0F105A122F3352EA0020D631 /* Lottie */,
 			);
 			productName = HabitTrackerApp;
 			productReference = 0FBFEE4F2ED885A700DCF993 /* HabitTrackerApp.app */;
@@ -323,6 +329,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				0FBFEE812ED88AA100DCF993 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				0F105A112F3352EA0020D631 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0FBFEE502ED885A700DCF993 /* Products */;
@@ -371,6 +378,7 @@
 				0FBFEE722ED8862A00DCF993 /* SceneDelegate.swift in Sources */,
 				0FBFEED82EFC7EC900DCF993 /* CollectionViewFlowCustomizable.swift in Sources */,
 				0FBFEEC82EF563FD00DCF993 /* Router.swift in Sources */,
+				0F105A102F3352490020D631 /* SpinnerDisplayable.swift in Sources */,
 				0FBFEECD2EFC3D3C00DCF993 /* CalendarCollectionViewCell.swift in Sources */,
 				0FBFEE982ED88F8700DCF993 /* SettingsViewController.swift in Sources */,
 				0FBFEEE02F0002D000DCF993 /* AddHabitViewController.swift in Sources */,
@@ -602,6 +610,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0F105A112F3352EA0020D631 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.6.0;
+			};
+		};
 		0FBFEE812ED88AA100DCF993 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -613,6 +629,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0F105A122F3352EA0020D631 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F105A112F3352EA0020D631 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
 		0FBFEE822ED88AA100DCF993 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0FBFEE812ED88AA100DCF993 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
