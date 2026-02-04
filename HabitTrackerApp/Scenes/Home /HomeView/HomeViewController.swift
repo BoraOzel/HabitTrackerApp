@@ -20,7 +20,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     @IBOutlet weak var habitCollectionView: UICollectionView!
     
-    var viewModel: HomeViewModelInterface = HomeViewModel()
+    var viewModel: HomeViewModelInterface = HomeViewModel(habitService: HabitService())
     
     private var hasInitialScrollPerformed = false
     

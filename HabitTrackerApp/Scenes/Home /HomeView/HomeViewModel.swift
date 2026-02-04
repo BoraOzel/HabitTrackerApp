@@ -36,7 +36,10 @@ protocol HomeViewModelInterface {
     func calculateStreak(completedDates: [Date], selectedDays: [Int]) -> Int
 }
 
+@MainActor
 class HomeViewModel {
+    
+    private let habitService: HabitServiceProtocol
     
     weak var delegate: HomeViewModelDelegate?
     
@@ -45,6 +48,10 @@ class HomeViewModel {
     private var habits: [Habits] = []
     private var displayedHabits: [Habits] = []
     private var db = Firestore.firestore()
+    
+    init(habitService: HabitServiceProtocol) {
+        self.habitService = habitService
+    }
     
     private func setupCalendarData() {
         dates.removeAll()
@@ -117,46 +124,39 @@ extension HomeViewModel: HomeViewModelInterface {
     
     func fetchUserData() {
         
-        let id = AuthManager.shared.currentUser?.uid
+        guard let uid = AuthManager.shared.currentUser?.uid else { return }
         
-        db.collection("users").document(id!).getDocument { snapshot, error  in  // remove force unwrap
-            
-            guard let document = snapshot, document.exists, let data = document.data() else {
-                print("document could not found.")
-                return
-            }
-            
-            if let name = data["name"] as? String {
-                let titleText = "Hi, \(name)"
+        Task {
+            do {
+                let user = try await habitService.fetchUser(userId: uid)
+                let titleText = "Hi, \(user.name)"
                 self.delegate?.updateHeader(title: titleText)
             }
+            catch {
+                print(error.localizedDescription)
+            }
         }
+        
     }
     
     func fetchHabits() {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        db.collection("habits")
-            .whereField("userId", isEqualTo: uid)
-            .order(by: "createdAt", descending: true).getDocuments { [weak self] snapshot, error  in
+        Task {
+            do {
+                let fetchedHabits = try await habitService.fetchHabits(userId: uid)
                 
-                guard let self = self else { return }
-                
-                guard let documents = snapshot?.documents else { return }
-                
-                self.habits = documents.compactMap{ document -> Habits? in
-                    var habit =  try? document.data(as: Habits.self)
-                    
-                    if let habitDates = habit?.completedDates,
-                       let selectedDays = habit?.selectedDays {
-                        habit?.streak = self.calculateStreak(completedDates: habitDates, selectedDays: selectedDays)
-                    }
-                    
-                    return habit
+                await MainActor.run {
+                    self.habits = fetchedHabits
+                    self.filterHabitsForSelectedDate()
+                    self.delegate?.reloadData()
                 }
-                self.filterHabitsForSelectedDate()
             }
+            catch {
+                print(error.localizedDescription)
+            }
+        }
         
     }
     
@@ -203,15 +203,15 @@ extension HomeViewModel: HomeViewModelInterface {
         }
         delegate?.reloadItems(at: [index])
         
-        guard let documentId = habit.id else {
-            print("Document ID can not found.")
-            return
+        Task {
+            do {
+                try await habitService.updateHabit(habit: habit)
+            }
+            catch {
+                print(error.localizedDescription)
+            }
         }
         
-        db.collection("habits").document(documentId).updateData([
-            "currentCount": habit.currentCount,
-            "completedDates": habit.completedDates
-        ])
     }
     
     func calculateStreak(completedDates: [Date], selectedDays: [Int]) -> Int {

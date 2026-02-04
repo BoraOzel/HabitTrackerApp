@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F105A0C2F1F8A980020D631 /* DayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F105A0B2F1F8A980020D631 /* DayButton.swift */; };
+		0F105A0E2F333F620020D631 /* HabitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F105A0D2F333F610020D631 /* HabitService.swift */; };
 		0FBFEE6E2ED8862A00DCF993 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FBFEE682ED8862A00DCF993 /* Assets.xcassets */; };
 		0FBFEE702ED8862A00DCF993 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FBFEE6B2ED8862A00DCF993 /* LaunchScreen.storyboard */; };
 		0FBFEE712ED8862A00DCF993 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEE672ED8862A00DCF993 /* AppDelegate.swift */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		0F105A0B2F1F8A980020D631 /* DayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayButton.swift; sourceTree = "<group>"; };
+		0F105A0D2F333F610020D631 /* HabitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitService.swift; sourceTree = "<group>"; };
 		0FBFEE4F2ED885A700DCF993 /* HabitTrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitTrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FBFEE672ED8862A00DCF993 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FBFEE682ED8862A00DCF993 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -147,7 +149,7 @@
 				0FBFEEA32ED9BAE500DCF993 /* Register */,
 				0FBFEE7C2ED886FA00DCF993 /* Login */,
 				0FBFEE772ED886C500DCF993 /* Home  */,
-				0FBFEE992ED88F8B00DCF993 /* Profile */,
+				0FBFEE992ED88F8B00DCF993 /* Settings */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -193,19 +195,20 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		0FBFEE992ED88F8B00DCF993 /* Profile */ = {
+		0FBFEE992ED88F8B00DCF993 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				0FBFEE952ED88F8700DCF993 /* SettingsViewController.swift */,
 				0FBFEE962ED88F8700DCF993 /* SettingsViewController.xib */,
 			);
-			path = Profile;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		0FBFEE9A2ED895C900DCF993 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				0FBFEE9B2ED895D500DCF993 /* AuthManager.swift */,
+				0F105A0D2F333F610020D631 /* HabitService.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				0FBFEEC62EF439A500DCF993 /* RegisterViewModel.swift in Sources */,
 				0FBFEE9E2ED89C2D00DCF993 /* AuthError.swift in Sources */,
 				0FBFEEA02ED89C3900DCF993 /* AppUser.swift in Sources */,
+				0F105A0E2F333F620020D631 /* HabitService.swift in Sources */,
 				0FBFEE7B2ED886DA00DCF993 /* HomeViewController.swift in Sources */,
 				0FBFEEE22F0002DD00DCF993 /* AddHabitViewModel.swift in Sources */,
 			);
