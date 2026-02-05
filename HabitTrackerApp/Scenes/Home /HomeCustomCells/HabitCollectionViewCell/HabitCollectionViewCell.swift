@@ -19,7 +19,6 @@ class HabitCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     
     func configure(habit: Habits, selectedDate: Date) {

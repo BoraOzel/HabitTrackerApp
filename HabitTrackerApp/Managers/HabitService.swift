@@ -12,6 +12,7 @@ protocol HabitServiceProtocol {
     func fetchUser(userId: String) async throws -> AppUser
     func fetchHabits(userId: String) async throws -> [Habits]
     func updateHabit(habit: Habits) async throws
+    func deleteHabit(habitId: String) async throws
 }
 
 class HabitService: HabitServiceProtocol {
@@ -46,6 +47,10 @@ class HabitService: HabitServiceProtocol {
             "streak": habit.streak ?? 0
         ])
         
+    }
+    
+    func deleteHabit(habitId: String) async throws {
+        try await db.collection("habits").document(habitId).delete()
     }
     
 }

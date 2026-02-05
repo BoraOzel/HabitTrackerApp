@@ -35,6 +35,7 @@ protocol HomeViewModelInterface {
     func filterHabitsForSelectedDate()
     func completeHabit(index: Int)
     func calculateStreak(completedDates: [Date], selectedDays: [Int]) -> Int
+    func deleteHabit(at index: Int)
 }
 
 @MainActor
@@ -82,6 +83,7 @@ extension HomeViewModel: HomeViewModelInterface {
     
     func viewDidLoad() {
         setupCalendarData()
+        view?.createSwipableListLayout()
         fetchUserData()
         fetchHabits()
         delegate?.reloadData()
@@ -282,6 +284,27 @@ extension HomeViewModel: HomeViewModelInterface {
         }
         
         return streakCount
+    }
+    
+    func deleteHabit(at index: Int) {
+        
+        let habitToDelete = displayedHabits[index]
+        guard let id = habitToDelete.id else { return }
+        
+        displayedHabits.remove(at: index)
+        
+        if let mainIndex = habits.firstIndex(where: { $0.id == id }) {
+            habits.remove(at: mainIndex)
+        }
+        
+        Task {
+            do{
+                try await habitService.deleteHabit(habitId: id)
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+        }
     }
     
 }

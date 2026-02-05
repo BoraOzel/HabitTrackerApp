@@ -13,6 +13,7 @@ protocol HomeViewControllerInterface: AnyObject,
     func performInitialScroll()
     func navigateToHabitScreen(vc: UIViewController)
     func showLoading(show: Bool)
+    func createSwipableListLayout()
 }
 
 
@@ -82,6 +83,15 @@ extension HomeViewController: HomeViewControllerInterface {
         show ? showProgress() : removeProgress()
     }
     
+    func createSwipableListLayout() {
+        habitCollectionView.collectionViewLayout = CollectionViewLayoutFactory.createSwipeableListLayout { [weak self] indexPath in
+            guard let self = self else { return }
+            
+            self.viewModel.deleteHabit(at: indexPath.row)
+            self.habitCollectionView.deleteItems(at: [indexPath])
+        }
+    }
+    
 }
 
 extension HomeViewController: UICollectionViewDataSource {
@@ -102,7 +112,7 @@ extension HomeViewController: UICollectionViewDataSource {
         
         if collectionView == calendarCollectionView {
             guard let calendarCell: CalendarCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCollectionViewCell",
-                                                                                            for: indexPath) as? CalendarCollectionViewCell
+                                                                                                    for: indexPath) as? CalendarCollectionViewCell
             else {
                 return UICollectionViewCell()
             }
@@ -118,7 +128,7 @@ extension HomeViewController: UICollectionViewDataSource {
         }
         else if collectionView == habitCollectionView {
             guard let habitCell: HabitCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HabitCollectionViewCell",
-                                                                                         for: indexPath) as? HabitCollectionViewCell
+                                                                                              for: indexPath) as? HabitCollectionViewCell
             else {
                 return UICollectionViewCell()
             }
@@ -133,7 +143,7 @@ extension HomeViewController: UICollectionViewDataSource {
             return habitCell
             
         }
-    
+        
         return UICollectionViewCell()
         
     }
