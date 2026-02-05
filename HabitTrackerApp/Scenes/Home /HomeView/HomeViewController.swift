@@ -134,10 +134,14 @@ extension HomeViewController: UICollectionViewDataSource {
             }
             
             let habit = viewModel.habit(index: indexPath.row)
-            habitCell.configure(habit: habit, selectedDate: viewModel.selectedDate)
             
-            habitCell.onCompleteTapped = {
-                self.viewModel.completeHabit(index: indexPath.row)
+            let isFuture = viewModel.isSelectedDateInFuture
+            
+            habitCell.configure(habit: habit, selectedDate: viewModel.selectedDate, isFuture: isFuture)
+            
+            habitCell.onCompleteTapped = { [weak self] in
+                if isFuture { return }
+                self?.viewModel.completeHabit(index: indexPath.row)
             }
             
             return habitCell

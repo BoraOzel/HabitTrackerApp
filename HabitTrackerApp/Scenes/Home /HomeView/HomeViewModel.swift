@@ -21,8 +21,9 @@ protocol HomeViewModelInterface {
     var delegate: HomeViewModelDelegate? { get set }
     var dates: [Date] { get }
     var selectedDate: Date { get }
-    var numberOfDates: Int {get}
+    var numberOfDates: Int { get }
     var numberOfHabits: Int { get }
+    var isSelectedDateInFuture: Bool { get }
     
     func viewDidLoad()
     func viewWillAppear()
@@ -79,6 +80,14 @@ extension HomeViewModel: HomeViewModelInterface {
     
     var numberOfHabits: Int {
         return displayedHabits.count
+    }
+    
+    var isSelectedDateInFuture: Bool {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let selected = calendar.startOfDay(for: selectedDate)
+        
+        return selected > today
     }
     
     func viewDidLoad() {

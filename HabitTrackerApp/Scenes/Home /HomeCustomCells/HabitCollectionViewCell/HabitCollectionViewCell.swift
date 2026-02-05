@@ -21,7 +21,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
-    func configure(habit: Habits, selectedDate: Date) {
+    func configure(habit: Habits, selectedDate: Date, isFuture: Bool) {
         
         habitNameLabel.text = habit.title
         goalLabel.text = "\(habit.goalCount) \(habit.goalUnit)"
@@ -38,10 +38,20 @@ class HabitCollectionViewCell: UICollectionViewCell {
             checkmarkImageView.image = UIImage(systemName: "checkmark.circle.fill")
             checkmarkImageView.tintColor = .systemGreen
             containerView.alpha = 0.8
-        } else {
+        }
+        else {
             checkmarkImageView.image = UIImage(systemName: "circle")
             checkmarkImageView.tintColor = .systemGray3
             containerView.alpha = 1.0
+        }
+        
+        if isFuture {
+            isUserInteractionEnabled = false
+            self.contentView.alpha = 0.5
+        }
+        else {
+            isUserInteractionEnabled = true
+            self.contentView.alpha = 1
         }
         
         containerView.layer.cornerRadius = 12
