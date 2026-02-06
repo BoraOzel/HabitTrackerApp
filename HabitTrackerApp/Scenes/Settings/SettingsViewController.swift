@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol SettingsViewControllerInterface {
+    func setupThemeSegment()
+}
+
 class SettingsViewController: UIViewController {
     
     private let authManager = AuthManager.shared
+    
+    @IBOutlet weak var themeSegmentControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,4 +36,19 @@ class SettingsViewController: UIViewController {
         }
         
     }
+    
+    @IBAction func themeChanged(_ sender: UISegmentedControl) {
+        guard let selectedTheme = ThemeManager.Theme(rawValue: sender.selectedSegmentIndex) else { return }
+        ThemeManager.applyTheme(theme: selectedTheme)
+    }
+    
+}
+
+extension SettingsViewController: SettingsViewControllerInterface {
+    
+    func setupThemeSegment() {
+        let currentTheme = ThemeManager.getSavedTheme()
+        themeSegmentControl.selectedSegmentIndex = currentTheme.rawValue
+    }
+    
 }

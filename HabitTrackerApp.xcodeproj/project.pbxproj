@@ -12,6 +12,7 @@
 		0F105A102F3352490020D631 /* SpinnerDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F105A0F2F3352490020D631 /* SpinnerDisplayable.swift */; };
 		0F105A132F3352EA0020D631 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0F105A122F3352EA0020D631 /* Lottie */; };
 		0F105A182F34980E0020D631 /* CollectionViewLayoutFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F105A172F34980E0020D631 /* CollectionViewLayoutFactory.swift */; };
+		0F105A2F2F35F2BB0020D631 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F105A2E2F35F2BB0020D631 /* ThemeManager.swift */; };
 		0FBFEE6E2ED8862A00DCF993 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FBFEE682ED8862A00DCF993 /* Assets.xcassets */; };
 		0FBFEE702ED8862A00DCF993 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FBFEE6B2ED8862A00DCF993 /* LaunchScreen.storyboard */; };
 		0FBFEE712ED8862A00DCF993 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBFEE672ED8862A00DCF993 /* AppDelegate.swift */; };
@@ -55,6 +56,7 @@
 		0F105A0D2F333F610020D631 /* HabitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitService.swift; sourceTree = "<group>"; };
 		0F105A0F2F3352490020D631 /* SpinnerDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerDisplayable.swift; sourceTree = "<group>"; };
 		0F105A172F34980E0020D631 /* CollectionViewLayoutFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLayoutFactory.swift; sourceTree = "<group>"; };
+		0F105A2E2F35F2BB0020D631 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		0FBFEE4F2ED885A700DCF993 /* HabitTrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitTrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FBFEE672ED8862A00DCF993 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FBFEE682ED8862A00DCF993 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 			children = (
 				0FBFEE9B2ED895D500DCF993 /* AuthManager.swift */,
 				0F105A0D2F333F610020D631 /* HabitService.swift */,
+				0F105A2E2F35F2BB0020D631 /* ThemeManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				0FBFEEE02F0002D000DCF993 /* AddHabitViewController.swift in Sources */,
 				0FBFEED62EFC416E00DCF993 /* HabitCollectionViewCell.swift in Sources */,
 				0FBFEEA92EF4208500DCF993 /* LoginViewModel.swift in Sources */,
+				0F105A2F2F35F2BB0020D631 /* ThemeManager.swift in Sources */,
 				0FBFEEC62EF439A500DCF993 /* RegisterViewModel.swift in Sources */,
 				0FBFEE9E2ED89C2D00DCF993 /* AuthError.swift in Sources */,
 				0FBFEEA02ED89C3900DCF993 /* AppUser.swift in Sources */,

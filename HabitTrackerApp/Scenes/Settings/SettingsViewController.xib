@@ -4,12 +4,14 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24063"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="HabitTrackerApp" customModuleProvider="target">
             <connections>
+                <outlet property="themeSegmentControl" destination="YHT-vR-Qkn" id="DVO-8d-FjX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,27 +20,78 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQ9-j5-1mh">
-                    <rect key="frame" x="154" y="408.66666666666669" width="85" height="35"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Log Out"/>
-                    <connections>
-                        <action selector="logoutButtonClicked:" destination="-1" eventType="touchUpInside" id="Zsj-sa-1z4"/>
-                    </connections>
-                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L27-2c-d0B">
+                    <rect key="frame" x="0.0" y="128" width="393" height="646"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="444" translatesAutoresizingMaskIntoConstraints="NO" id="hrH-LV-A0k">
+                            <rect key="frame" x="10" y="5" width="373" height="50"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="yEJ-Fh-qZO">
+                                    <rect key="frame" x="0.0" y="0.0" width="373" height="50"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dark Mode:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qd-bf-FWh">
+                                            <rect key="frame" x="0.0" y="0.0" width="165" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YHT-vR-Qkn">
+                                            <rect key="frame" x="173" y="0.0" width="200" height="51"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="200" id="bRD-Fh-aNd"/>
+                                                <constraint firstAttribute="height" constant="50" id="sbo-HM-0ab"/>
+                                            </constraints>
+                                            <segments>
+                                                <segment title="System"/>
+                                                <segment title="Light"/>
+                                                <segment title="Dark"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="themeChanged:" destination="-1" eventType="valueChanged" id="QI1-FA-oOU"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQ9-j5-1mh">
+                            <rect key="frame" x="154.33333333333334" y="85" width="84.666666666666657" height="531"/>
+                            <color key="tintColor" systemColor="systemIndigoColor"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Log Out"/>
+                            <connections>
+                                <action selector="logoutButtonClicked:" destination="-1" eventType="touchUpInside" id="Zsj-sa-1z4"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="hrH-LV-A0k" firstAttribute="leading" secondItem="L27-2c-d0B" secondAttribute="leading" constant="10" id="13o-Pd-APV"/>
+                        <constraint firstItem="qQ9-j5-1mh" firstAttribute="top" secondItem="hrH-LV-A0k" secondAttribute="bottom" constant="30" id="6Ab-qc-nfU"/>
+                        <constraint firstItem="hrH-LV-A0k" firstAttribute="top" secondItem="L27-2c-d0B" secondAttribute="top" constant="5" id="QFY-pS-D3M"/>
+                        <constraint firstAttribute="bottom" secondItem="qQ9-j5-1mh" secondAttribute="bottom" constant="30" id="SvE-FM-6ic"/>
+                        <constraint firstItem="qQ9-j5-1mh" firstAttribute="centerX" secondItem="L27-2c-d0B" secondAttribute="centerX" id="ZFD-TF-vcu"/>
+                        <constraint firstAttribute="trailing" secondItem="hrH-LV-A0k" secondAttribute="trailing" constant="10" id="ZoD-cM-x8G"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="qQ9-j5-1mh" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="AfK-z1-fGg"/>
-                <constraint firstItem="qQ9-j5-1mh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Qrs-lG-SZr"/>
+                <constraint firstItem="L27-2c-d0B" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="QWs-QD-0oE"/>
+                <constraint firstItem="L27-2c-d0B" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="bL5-nx-IqV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="L27-2c-d0B" secondAttribute="bottom" constant="10" id="dVm-r2-t1Q"/>
+                <constraint firstItem="L27-2c-d0B" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="rIi-on-NEM"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="154"/>
+            <point key="canvasLocation" x="138.1679389312977" y="153.52112676056339"/>
         </view>
     </objects>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
