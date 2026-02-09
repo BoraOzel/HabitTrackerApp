@@ -13,8 +13,12 @@ protocol LoginViewModelInterface {
 
 class LoginViewModel {
     
-    private let authManager = AuthManager.shared
+    private let authManager: AuthManagerProtocol
     weak var view: LoginViewControllerInterface?
+    
+    init(authManager: AuthManagerProtocol = AuthManager.shared) {
+        self.authManager = authManager
+    }
     
 }
 

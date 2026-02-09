@@ -51,7 +51,6 @@ class HomeViewModel {
     private(set) var selectedDate = Date()
     private var habits: [Habits] = []
     private var displayedHabits: [Habits] = []
-    private var db = Firestore.firestore()
     private var isLoading = false
     
     init(habitService: HabitServiceProtocol) {
@@ -159,7 +158,7 @@ extension HomeViewModel: HomeViewModelInterface {
     
     func fetchHabits() {
         
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let uid = AuthManager.shared.currentUser?.uid else { return }
         
         self.view?.showLoading(show: true)
         

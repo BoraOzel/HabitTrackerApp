@@ -9,6 +9,13 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
+protocol AuthManagerProtocol {
+    func registerUser(with email: String, password: String, name: String, surname: String, birthdate: Date) async throws
+    func signIn(with email: String, password: String) async throws
+    func signOut() throws
+    func mapFirebaseError(_ error: Error) -> AuthError
+}
+
 final class AuthManager {
     
     static let shared = AuthManager()
@@ -28,6 +35,10 @@ final class AuthManager {
     var userSessionId: String? {
         return currentUser?.uid
     }
+    
+}
+
+extension AuthManager: AuthManagerProtocol {
     
     
     func registerUser(with email: String, password: String, name: String, surname: String, birthdate: Date) async throws {

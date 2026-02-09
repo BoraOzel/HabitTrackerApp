@@ -21,13 +21,15 @@ protocol AddHabitViewModelInterface {
 
 class AddHabitViewModel {
     
-    private let habitService: HabitServiceProtocol = HabitService()
+    private let habitService: HabitServiceProtocol
     private let db = Firestore.firestore()
     
     var habitToEdit: Habits?
     
-    init(habitToEdit: Habits? = nil) {
+    init(habitToEdit: Habits? = nil,
+         habitService: HabitServiceProtocol = HabitService()) {
         self.habitToEdit = habitToEdit
+        self.habitService = habitService
     }
     
     var initalHabitName: String {
@@ -66,7 +68,8 @@ extension AddHabitViewModel: AddHabitViewModelInterface {
             }
         }
         else {
-            let newHabit = Habits(userId: AuthManager.shared.currentUser!.uid,
+            guard let userId = AuthManager.shared.currentUser?.uid else { return }
+            let newHabit = Habits(userId: userId,
                                   title: title,
                                   completedDates: [],
                                   selectedDays: selectedDays,
