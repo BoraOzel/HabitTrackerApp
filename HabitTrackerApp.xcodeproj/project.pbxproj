@@ -160,7 +160,7 @@
 				0FBFEEDC2F0002B400DCF993 /* AddHabit */,
 				0FBFEEA32ED9BAE500DCF993 /* Register */,
 				0FBFEE7C2ED886FA00DCF993 /* Login */,
-				0FBFEE772ED886C500DCF993 /* Home  */,
+				0FBFEE772ED886C500DCF993 /* Home */,
 				0FBFEE992ED88F8B00DCF993 /* Settings */,
 			);
 			path = Scenes;
@@ -191,13 +191,13 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		0FBFEE772ED886C500DCF993 /* Home  */ = {
+		0FBFEE772ED886C500DCF993 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				0FBFEECE2EFC411400DCF993 /* HomeView */,
 				0FBFEEC92EFC3D0F00DCF993 /* HomeCustomCells */,
 			);
-			path = "Home ";
+			path = Home;
 			sourceTree = "<group>";
 		};
 		0FBFEE7C2ED886FA00DCF993 /* Login */ = {
