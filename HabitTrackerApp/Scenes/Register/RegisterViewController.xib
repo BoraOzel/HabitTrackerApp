@@ -79,9 +79,12 @@
                         </stackView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hf9-CU-1hm">
                             <rect key="frame" x="149.66666666666666" y="501.33333333333331" width="84" height="34.333333333333314"/>
+                            <color key="backgroundColor" systemColor="systemIndigoColor"/>
                             <color key="tintColor" systemColor="systemIndigoColor"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="filled" title="Sign Up"/>
+                            <buttonConfiguration key="configuration" style="filled" title="Sign Up">
+                                <color key="baseBackgroundColor" systemColor="systemIndigoColor"/>
+                            </buttonConfiguration>
                             <connections>
                                 <action selector="signUpButtonClicked:" destination="-1" eventType="touchUpInside" id="ii0-6k-xij"/>
                             </connections>

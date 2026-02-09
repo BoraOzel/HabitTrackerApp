@@ -7,34 +7,35 @@
 
 import UIKit
 
-protocol SettingsViewControllerInterface {
+protocol SettingsViewControllerInterface: AnyObject {
     func setupThemeSegment()
 }
 
 class SettingsViewController: UIViewController {
     
-    private let authManager = AuthManager.shared
-    
     @IBOutlet weak var themeSegmentControl: UISegmentedControl!
+    
+    private var viewModel: SettingsViewModelInterface
+    
+    init(viewModel: SettingsViewModelInterface = SettingsViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: "SettingsViewController", bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        viewModel.view = self
+        viewModel.viewDidLoad()
     }
     
     @IBAction func logoutButtonClicked(_ sender: Any) {
-        
-        do {
-            try authManager.signOut()
-            
-            guard let window = self.view.window else { return }
-            Router.switchToAuth(window: window
-            )
-        }
-        catch {
-            print(error.localizedDescription)
-        }
-        
+        viewModel.logout()
+        guard let window = self.view.window else { return }
+        Router.switchToAuth(window: window)
     }
     
     @IBAction func themeChanged(_ sender: UISegmentedControl) {

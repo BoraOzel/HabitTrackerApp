@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol AddHabitViewControllerInterface {
+protocol AddHabitViewControllerInterface: AnyObject {
     func getSelectedFrequency() -> [Int]
     func assignButtonIds()
     func setInitalValues()
@@ -37,9 +37,8 @@ class AddHabitViewController: UIViewController,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        assignButtonIds()
-        setInitalValues()
-        
+        viewModel.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
     }
     
     @IBAction func saveButtonClicked(_ sender: Any) {

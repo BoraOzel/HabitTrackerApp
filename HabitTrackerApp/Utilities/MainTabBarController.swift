@@ -17,14 +17,14 @@ class MainTabBarController: UITabBarController {
     
     private func setupTabs() {
      
-        let homeVC = HomeViewController(nibName: "HomeViewController", bundle: nil)
+        let homeVC = HomeViewController(viewModel: HomeViewModel(habitService: HabitService()))
         let homeNav = UINavigationController(rootViewController: homeVC)
         
         homeNav.tabBarItem = UITabBarItem(title: "Home",
                                           image: UIImage(systemName: "house"),
                                           selectedImage: UIImage(systemName: "house.fill"))
         
-        let settingsVC = SettingsViewController(nibName: "SettingsViewController", bundle: nil)
+        let settingsVC = SettingsViewController()
         let settingsNav = UINavigationController(rootViewController: settingsVC)
         
         settingsNav.tabBarItem = UITabBarItem(title: "Settings",

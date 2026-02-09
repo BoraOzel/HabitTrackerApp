@@ -91,6 +91,7 @@ extension HomeViewModel: HomeViewModelInterface {
     
     func viewDidLoad() {
         setupCalendarData()
+        view?.setupCollectionView()
         view?.createSwipableListLayout()
         fetchUserData()
         fetchHabits()

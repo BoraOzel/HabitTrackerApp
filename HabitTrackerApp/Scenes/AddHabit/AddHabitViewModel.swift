@@ -17,6 +17,7 @@ protocol AddHabitViewModelInterface {
     var buttonTitle: String { get }
     
     func saveHabit(title: String,selectedDays: [Int],reminderTime: Date, goalCount: Int, goalUnit: String)
+    func viewDidLoad()
 }
 
 class AddHabitViewModel {
@@ -24,6 +25,7 @@ class AddHabitViewModel {
     private let habitService: HabitServiceProtocol
     private let db = Firestore.firestore()
     
+    weak var view: AddHabitViewControllerInterface?
     var habitToEdit: Habits?
     
     init(habitToEdit: Habits? = nil,
@@ -84,6 +86,11 @@ extension AddHabitViewModel: AddHabitViewModelInterface {
             }
         }
         
+    }
+    
+    func viewDidLoad() {
+        view?.assignButtonIds()
+        view?.setInitalValues()
     }
     
 }
