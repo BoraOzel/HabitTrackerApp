@@ -13,6 +13,7 @@ protocol HabitServiceProtocol {
     func fetchHabits(userId: String) async throws -> [Habits]
     func updateHabit(habit: Habits) async throws
     func deleteHabit(habitId: String) async throws
+    func addHabit(habit: Habits) async throws
 }
 
 class HabitService: HabitServiceProtocol {
@@ -41,16 +42,19 @@ class HabitService: HabitServiceProtocol {
         
         guard let id = habit.id else { return }
         
-        try await db.collection("habits").document("id").updateData([
-            "currentCount": habit.currentCount,
-            "completedDates": habit.completedDates,
-            "streak": habit.streak ?? 0
-        ])
+        try await db.collection("habits").document(id).setData(from: habit, merge: true)
         
     }
     
     func deleteHabit(habitId: String) async throws {
         try await db.collection("habits").document(habitId).delete()
+    }
+    
+    func addHabit(habit: Habits) async throws {
+        
+        let habitId = UUID().uuidString
+        try await db.collection("habits").document(habitId).setData(from: habit)
+        
     }
     
 }

@@ -10,12 +10,41 @@ import FirebaseAuth
 import FirebaseFirestore
 
 protocol AddHabitViewModelInterface {
+    var habitToEdit: Habits? { get }
+    var initalHabitName: String { get }
+    var initalSelectedDays: [Int] { get }
+    var screenTitle: String { get }
+    var buttonTitle: String { get }
+    
     func saveHabit(title: String,selectedDays: [Int],reminderTime: Date, goalCount: Int, goalUnit: String)
 }
 
 class AddHabitViewModel {
     
+    private let habitService: HabitServiceProtocol = HabitService()
     private let db = Firestore.firestore()
+    
+    var habitToEdit: Habits?
+    
+    init(habitToEdit: Habits? = nil) {
+        self.habitToEdit = habitToEdit
+    }
+    
+    var initalHabitName: String {
+        return habitToEdit?.title ?? ""
+    }
+    
+    var initalSelectedDays: [Int] {
+        return habitToEdit?.selectedDays ?? []
+    }
+    
+    var screenTitle: String {
+        return habitToEdit != nil ? "Edit Habit" : "Add Habit"
+    }
+    
+    var buttonTitle: String {
+        return habitToEdit != nil ? "Update" : "Save"
+    }
     
 }
 
@@ -23,30 +52,35 @@ extension AddHabitViewModel: AddHabitViewModelInterface {
     
     func saveHabit(title: String,selectedDays: [Int], reminderTime: Date, goalCount: Int, goalUnit: String) {
         
-        let habitId = UUID().uuidString
-        
-        let newHabit = Habits(userId: AuthManager.shared.currentUser!.uid,
-                              title: title,
-                              completedDates: [],
-                              selectedDays: selectedDays,
-                              reminderTime: reminderTime,
-                              goalCount: goalCount,
-                              currentCount: 0,
-                              goalUnit: goalUnit,
-                              createdAt: Date())
-        
-        do {
-            try db.collection("habits").document(habitId).setData(from: newHabit) { error in
-                if let error = error {
-                    print(error.localizedDescription)
-                }
-                else {
-                    print("saved succesfully")
-                }
+        if let existingHabit = habitToEdit {
+            var updatedHabit = existingHabit
+            
+            updatedHabit.title = title
+            updatedHabit.selectedDays = selectedDays
+            updatedHabit.reminderTime = reminderTime
+            updatedHabit.goalCount = goalCount
+            updatedHabit.goalUnit = goalUnit
+            
+            Task {
+                try await habitService.updateHabit(habit: updatedHabit)
             }
         }
-        catch {
-            print("errorr")
+        else {
+            let newHabit = Habits(userId: AuthManager.shared.currentUser!.uid,
+                                  title: title,
+                                  completedDates: [],
+                                  selectedDays: selectedDays,
+                                  reminderTime: reminderTime,
+                                  goalCount: goalCount,
+                                  currentCount: 0,
+                                  goalUnit: goalUnit,
+                                  createdAt: Date())
+            
+            Task {
+                try await habitService.addHabit(habit: newHabit)
+            }
         }
+        
     }
+    
 }

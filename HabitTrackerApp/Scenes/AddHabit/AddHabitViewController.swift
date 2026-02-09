@@ -10,33 +10,46 @@ import UIKit
 protocol AddHabitViewControllerInterface {
     func getSelectedFrequency() -> [Int]
     func assignButtonIds()
+    func setInitalValues()
 }
 
 class AddHabitViewController: UIViewController,
                               AlertPresentable {
-
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var habitNameTextField: UITextField!
     @IBOutlet weak var goalAmountTextField: UITextField!
     @IBOutlet weak var goalUnitTextField: UITextField!
     @IBOutlet weak var remindDateTimePicker: UIDatePicker!
     @IBOutlet var dayButtons: [DayButton]!
     
-    private var viewModel: AddHabitViewModelInterface = AddHabitViewModel()
+    private var viewModel: AddHabitViewModelInterface
+    
+    init(viewModel: AddHabitViewModelInterface) {
+        self.viewModel = viewModel
+        super.init(nibName: "AddHabitViewController", bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         assignButtonIds()
+        setInitalValues()
+        
     }
-
     
     @IBAction func saveButtonClicked(_ sender: Any) {
         
         let selectedDays = getSelectedFrequency()
         
         if selectedDays.isEmpty {
-           showAlert(title: "Error",
-                     message: "Please select at least 1 day.",
-                     buttonText: "OK")
+            showAlert(title: "Error",
+                      message: "Please select at least 1 day.",
+                      buttonText: "OK")
             return
         }
         
@@ -69,7 +82,7 @@ extension AddHabitViewController: AddHabitViewControllerInterface {
         return dayButtons.filter { $0.isSelected }.map { $0.dayIndex }.sorted()
     }
     
-    func assignButtonIds() {
+   func assignButtonIds() {
         
         dayButtons = dayButtons.sorted{ $0.tag < $1.tag }
         
@@ -77,6 +90,27 @@ extension AddHabitViewController: AddHabitViewControllerInterface {
         
         for (index, button) in dayButtons.enumerated() {
             button.dayIndex = calendarIndices[index]
+        }
+        
+    }
+    
+    func setInitalValues() {
+        
+        titleLabel.text = viewModel.screenTitle
+        saveButton.setTitle(viewModel.buttonTitle, for: .normal)
+        habitNameTextField.text = viewModel.initalHabitName
+        goalAmountTextField.text = String(viewModel.habitToEdit?.goalCount ?? 0)
+        goalUnitTextField.text = viewModel.habitToEdit?.goalUnit
+        remindDateTimePicker.date = viewModel.habitToEdit?.reminderTime ?? Date()
+        
+        let days = viewModel.initalSelectedDays
+        dayButtons.forEach { button in
+            if days.contains(button.tag) {
+                button.isSelected = true
+            }
+            else {
+                button.isSelected = false
+            }
         }
         
     }

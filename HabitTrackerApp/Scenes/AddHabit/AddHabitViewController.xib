@@ -14,6 +14,8 @@
                 <outlet property="goalUnitTextField" destination="AdK-ln-1SA" id="JwL-WO-o13"/>
                 <outlet property="habitNameTextField" destination="KAx-s4-eN3" id="qO3-Zd-iQl"/>
                 <outlet property="remindDateTimePicker" destination="wlN-Lz-Kmn" id="wbG-YM-VMx"/>
+                <outlet property="saveButton" destination="Cll-X8-BTX" id="ylJ-X1-dz9"/>
+                <outlet property="titleLabel" destination="TFd-kE-qVT" id="vlv-LS-sSv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outletCollection property="dayButtons" destination="xc3-gT-tFK" collectionClass="NSMutableArray" id="whI-pW-y5L"/>
                 <outletCollection property="dayButtons" destination="xd3-hX-PRe" collectionClass="NSMutableArray" id="4Bk-SS-Diw"/>
@@ -92,7 +94,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="wlN-Lz-Kmn">
-                                                    <rect key="frame" x="187" y="0.0" width="186" height="50"/>
+                                                    <rect key="frame" x="186.66666666666663" y="0.0" width="186.33333333333337" height="50"/>
                                                     <color key="tintColor" systemColor="systemIndigoColor"/>
                                                 </datePicker>
                                             </subviews>
@@ -111,7 +113,7 @@
                                                         <attributedString key="attributedTitle">
                                                             <fragment content="Mon">
                                                                 <attributes>
-                                                                    <font key="NSFont" size="14" name="Helvetica"/>
+                                                                    <font key="NSFont" size="13" name="Helvetica"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
@@ -139,7 +141,7 @@
                                                         <attributedString key="attributedTitle">
                                                             <fragment content="Tue">
                                                                 <attributes>
-                                                                    <font key="NSFont" size="14" name="Helvetica"/>
+                                                                    <font key="NSFont" size="13" name="Helvetica"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
@@ -167,7 +169,7 @@
                                                         <attributedString key="attributedTitle">
                                                             <fragment content="Wed">
                                                                 <attributes>
-                                                                    <font key="NSFont" size="14" name="Helvetica"/>
+                                                                    <font key="NSFont" size="13" name="Helvetica"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
@@ -195,7 +197,7 @@
                                                         <attributedString key="attributedTitle">
                                                             <fragment content="Thu">
                                                                 <attributes>
-                                                                    <font key="NSFont" size="14" name="Helvetica"/>
+                                                                    <font key="NSFont" size="13" name="Helvetica"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
@@ -223,7 +225,7 @@
                                                         <attributedString key="attributedTitle">
                                                             <fragment content="Fri">
                                                                 <attributes>
-                                                                    <font key="NSFont" size="14" name="Helvetica"/>
+                                                                    <font key="NSFont" size="13" name="Helvetica"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
@@ -251,7 +253,7 @@
                                                         <attributedString key="attributedTitle">
                                                             <fragment content="Sat">
                                                                 <attributes>
-                                                                    <font key="NSFont" size="14" name="Helvetica"/>
+                                                                    <font key="NSFont" size="13" name="Helvetica"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
@@ -279,7 +281,7 @@
                                                         <attributedString key="attributedTitle">
                                                             <fragment content="Sun">
                                                                 <attributes>
-                                                                    <font key="NSFont" size="14" name="Helvetica"/>
+                                                                    <font key="NSFont" size="13" name="Helvetica"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>

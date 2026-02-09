@@ -44,7 +44,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func addButtonClicked(_ sender: Any) {
-        navigateToHabitScreen(vc: AddHabitViewController())
+        navigateToHabitScreen(vc: AddHabitViewController(viewModel: AddHabitViewModel()))
     }
     
 }
@@ -84,12 +84,22 @@ extension HomeViewController: HomeViewControllerInterface {
     }
     
     func createSwipableListLayout() {
-        habitCollectionView.collectionViewLayout = CollectionViewLayoutFactory.createSwipeableListLayout { [weak self] indexPath in
+        habitCollectionView.collectionViewLayout = CollectionViewLayoutFactory.createSwipeableListLayout(onDelete: { [weak self] indexPath in
+            
+            self?.viewModel.deleteHabit(at: indexPath.row)
+            self?.habitCollectionView.deleteItems(at: [indexPath])
+            
+        }, onEdit: { [weak self] indexPath in
+            
             guard let self = self else { return }
             
-            self.viewModel.deleteHabit(at: indexPath.row)
-            self.habitCollectionView.deleteItems(at: [indexPath])
-        }
+            let habit = self.viewModel.habit(index: indexPath.row)
+            
+            let editViewModel = AddHabitViewModel(habitToEdit: habit)
+            let destVC = AddHabitViewController(viewModel: editViewModel)
+            
+            self.navigationController?.pushViewController(destVC, animated: true)
+        })
     }
     
 }
